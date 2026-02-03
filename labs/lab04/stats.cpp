@@ -73,42 +73,46 @@ double stddev(int* array, int size) {
 }
 
 int main() {
-    // Sets the printing of floating-point numbers
-    // to show only 2 places after the decimal point
-    cout << fixed << showpoint;
-    cout << setprecision(2);
+  // Sets the printing of floating-point numbers
+  // to show only 2 places after the decimal point
+  cout << fixed << showpoint;
+  cout << setprecision(2);
 
-    // MISSING CODE HERE (you can remove these comments)
-	// Get the number of grades to be entered from user
-    // Create a dynamic int array based on this information
-    // Get the user to enter all the grades
-    // Print results while calling the appropriate functions
-  cout << "Enter number of grades : ";
-  int grade_amount;
-  cin >> grade_amount;
-  cout << "Enter grades (each on a new line)" << endl;
-  for (int i = 0; i < grade_amount; i++) {
-    int grade;
-    cin >> grade;
-    int grade_list[] =+ grade;
-  }
+  // MISSING CODE HERE (you can remove these comments)
+// Get the number of grades to be entered from user
+  // Create a dynamic int array based on this information
+  // Get the user to enter all the grades
+  // Print results while calling the appropriate functions
+cout << "Enter number of grades : ";
+int grade_amount;
+cin >> grade_amount;
+cout << "Enter grades (each on a new line)" << endl;
+int size = grade_amount;
+for (int i = 0; i < size; i++) {
+  int grade;
+  cin >> grade;
+  int grades[] =+ grade;
+  cout << grades;
+}
 
-    // Test case
-    int numbers[] = {5, 9, 8, 11, 35, 22, 30, 19, 40};
-    int nl_size = 10;
+  // Test case: print grade_list array
 
-    //Trace avr var
-    cout << "Avr var is equal to: " << avr << endl;
-    // average of array
-    average(numbers, nl_size);
+  // Test case
+  int numbers[] = {5, 9, 8, 11, 35, 22, 30, 19, 40};
+  int nl_size = 10;
 
-    // median of array
-    median(numbers, nl_size);
+  //Trace avr var
+  cout << "Avr var is equal to: " << avr << endl;
+  // average of array
+  average(numbers, nl_size);
 
-    // standard deviation of array
-    stddev(numbers, nl_size);
+  // median of array
+  median(numbers, nl_size);
 
-    return 0;
+  // standard deviation of array
+  stddev(numbers, nl_size);
+
+  return 0;
 }
 
 // MISSING FUNCTION DEFINITIONS HERE (you can remove these comments)
