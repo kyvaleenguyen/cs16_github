@@ -9,7 +9,9 @@ int main()
 {
 	// Get strings from user -- USE:   getline(cin, <string_variable>);
 	string maybe_anagram1, maybe_anagram2;
+	cout << "Enter first string:" << endl;
 	getline(cin, maybe_anagram1);
+	cout << "Enter second string:" << endl;
 	getline(cin, maybe_anagram2);
 	
 	/* I found it easier to utilize the isalpha function in the book on page 393 and count
@@ -38,10 +40,10 @@ int main()
     // if they are anagrams, all counts at index i must be 0
     for (int i = 0; i < 256; i++) {
         if (counts[i] != 0) {
-            cout << "Not anagrams" << endl;
+            cout << "The strings are not anagrams." << endl;
             return 0;
         }
     }
-    cout << "Are anagrams" << endl;
+    cout << "The strings are anagrams." << endl;
     return 0;
 }
