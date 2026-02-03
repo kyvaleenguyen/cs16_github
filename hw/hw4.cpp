@@ -10,6 +10,13 @@ void reverse_print(int array[], int array_size) {
     }
 }
 
+// #6 function
+void swap(int *x, int *y) {
+    int tmp = *x;
+    *x = *y;
+    *y = tmp;       
+}
+
 int main () {
     // #4
     int num1 = 2, num2 = 8, *p = &num1, *q = &num2;
@@ -33,6 +40,20 @@ int main () {
     int Array[] = {1, 2, 3, 4, 5};
     int size = 5; 
     reverse_print(Array, size);
+
+    // #6
+    int a=2, b=4;
+    swap(&a, &b);
+    cout << a << " " << b << endl;
+
+    // #7
+    const int SIZE = 5;
+    int Gaucho[SIZE] = {10, 20, 30, 40, 50};
+    int *ucsb = Gaucho;
+    for (int *p=Gaucho; p < Gaucho + SIZE; p++) {
+        cout << *p << ",";
+    }
+    cout << endl;
 
     return 0;
 }
