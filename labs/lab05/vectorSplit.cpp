@@ -10,11 +10,13 @@ using namespace std;
 vector<string> split(string target, string delimiter);
 
 int main() {
-
-    // MISSING CODE HERE (you can remove these comments)
     // Get target string from user, get delimiter string from user
     // Call function split()
     // What happens next?!!?
+    /*string a = "bun's";
+    string delim = "'";
+    split(a, delim);*/
+
 
     return 0;
 }
@@ -22,3 +24,36 @@ int main() {
 // MISSING FUNCTION DEFINITIONS HERE 
 // Make sure you have Pre-Conditions and Post-Conditions defined for each function you define here!
 // (you can remove these comments)
+
+vector<string> split(string target, string delimiter) {
+    // Function definition
+
+    // Get string from user
+    cout << "Enter string to split:" << endl;
+    getline(cin, target);
+
+    // Enter string delimiter
+    cout << "Enter delimiter string" << endl;
+    getline(cin, delimiter);
+    if (delimiter.size() > 1) {
+        exit(1);
+    }
+
+    // Form substrings
+    vector<string> sample;
+    for (int i = 0; i < target.size(); i++) {
+        if (target.find(delimiter)) {
+            vector<int> delimiter_indexes[i] = i;
+        }
+
+
+        if (target[i] == target.find(delimiter, i)) {
+            sample.push_back(target.substr(i, -((size-1)-i)));
+        }
+    }
+
+    // Print substrings
+    cout << "The substrings are:" << endl;
+
+    return sample;
+}
