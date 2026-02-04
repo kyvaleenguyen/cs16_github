@@ -41,7 +41,7 @@ int main() {
   double median = findMedian(grades_list, grade_amount);
   double stddev = findStdDev(grades_list, grade_amount, average);
 
-  // Print statistics
+  // Print statistics (formatted)
   cout << "Here are some statistics:" << endl;
   cout << setw(9) << "Average: " << average << endl;
   cout << setw(9) << "Median: " << median << endl;
@@ -103,8 +103,6 @@ double findStdDev(int *array, int size, double average) {
       // Pow() function from <cmath>
       sum_of_squares += pow(array[i] - average, 2);        
     }
-
-
 
     // Final standard deviation
     if (size == 1) {
