@@ -9,39 +9,22 @@ vector<string> split(string target, string delimiter);
 
 
 int main () {
-    // Experimental vector<int> (and other vectors)
 
     // Get string from user
     cout << "Enter string to split:" << endl;
     string target;
     getline(cin, target);
 
-    //cout << target[3] << endl;
-
-    /*string s = "s";
-    string t = "s";
-    cout << ( t == s) << endl;*/
-
     // Enter string delimiter
     cout << "Enter delimiter string" << endl;
     string delimiter;
     getline(cin, delimiter);
+    // If delimiter entered has a character value of more than one, exit the program
     if (delimiter.size() > 1) {
         exit(1);
     }
 
-    // Keep in mind that if the statement below isn't true and runs the program will crash
-    /*cout << (target[0] == delimiter[0]) << endl;*/
-
-    // Sort substrings
-    /*for (int i = 0; i < target.size(); i++) {
-            int delimiter_position = target.find(delimiter);
-            cout << delimiter_position << endl;
-        }
-    */
-
     // Print substrings
-
     // If no substrings
     if (target.find(delimiter) == string::npos) {
             cout << "No substrings." << endl;
