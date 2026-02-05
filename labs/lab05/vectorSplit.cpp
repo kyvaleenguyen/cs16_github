@@ -27,7 +27,7 @@ int main () {
     // Print substrings
     // If no substrings
     if (target.find(delimiter) == string::npos) {
-            cout << "No substrings." << endl;
+        cout << "No substrings." << endl;
     }
 
     // If substrings
@@ -40,8 +40,9 @@ int main () {
         // Integer to set start of target index for substrings to 0
         int start = 0;
         for (int i = 0; i < target.size(); i++) {
-            // If delimiter found at index i in target and if thw substr size is greater than 0
+            // If delimiter found at index i in target and if the substr size is greater than 0
             if ((target[i] == delimiter[0]) && ((i-start)>=0)) {
+                // If the word found is not an empty string, add it to the substrings vector
                 word = target.substr(start, i - start);
                 if (word != "") {
                     substrings.push_back(word);
