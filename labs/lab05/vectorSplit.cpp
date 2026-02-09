@@ -9,19 +9,7 @@ vector<string> split(string target, string delimiter);
 
 
 int main () {
-    // Split function call
-    string t, d;
-    split(t, d);
-    
-    return 0;
-}
-
-// Split function definition
-vector<string> split(string target, string delimiter) {
-    // Variable declarations
-    vector<string> substrings;
-    string word;
-
+    string target, delimiter;
     // Get string from user
     cout << "Enter string to split:" << endl;
     getline(cin, target);
@@ -31,13 +19,23 @@ vector<string> split(string target, string delimiter) {
     getline(cin, delimiter);
     // If delimiter entered has a character value of more than one, exit the program
     if (delimiter.size() > 1) {
-        exit(1);
+        cerr << "Delimiter must only be one character.";
     }
+    // Split function call
+    split(target, delimiter);
+    return 0;
+}
+
+// Split function definition
+vector<string> split(string target, string delimiter) {
+    // Variable declarations
+    vector<string> substrings;
+    string word;
 
     // Print substrings
     // If no substrings
     if (target.find(delimiter) == string::npos) {
-        cout << "No substrings." << endl;
+        cerr << "No substrings.";
     }
 
     // If there are substrings
@@ -65,17 +63,16 @@ vector<string> split(string target, string delimiter) {
             }
         }
         // Get last substring after last delimiter & make sure the last word found isn't an empty string
-        if (word != "") {
-            // Insert quotes before & after last substring found
-            target.insert(start, "\"");
-            target.insert(start + word.size() + 1, "\"");
-            string last_substr = target.substr(start, word.size() + 2);
-            // Add last substring to substrings string vector
-            substrings.push_back(last_substr);
+        if (start < target.size()) {
+            string last_substr = target.substr(start);
+            if (word != "") {
+               string formatted_substr = "\"" + last_substr + "\"";
+               substrings.push_back(formatted_substr); 
+            }
         }
+        cout << "The substrings are: ";
     }
     // Organize substrings with proper formatting and print statement, then return substrings
-    cout << "The substrings are: ";
     for (int i=0; i < substrings.size(); i++) {
         cout << substrings[i];
     }
