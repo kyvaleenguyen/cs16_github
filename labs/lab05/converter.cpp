@@ -18,18 +18,19 @@ string dec2bh(string sdec, char bh);
 // The parameters within int main prompt the user to enter command line arguments
 int main ( int argc, char *argv[] ) {
     // Check to see if the command-line arguments are being used correctly
-    // Perform the conversion by calling the appropriate function
-    // What happens next?!!?
-
-    // Ensure command line arguments are being called correctly. <options: d2b, d2h, b2d>
-    // If command line input != decimal to hexadecimal conversion, decimal to binary conversion, binary to decimal end program
-    if ((argv[1] != "d2b") || (argv[1] != "b2d") || (argv[1] != "d2h")) {
-        exit(1);
+    // If there are not 3 arguments being used in the command line, exit the program
+    if (argc != 3) {
+        return 1;
     }
 
     // Argv convresions
     string converter = argv[1];
     string value = argv[2];
+
+    // If command line input != decimal to hexadecimal conversion, decimal to binary conversion, binary to decimal end program
+    if ((converter != "d2b") && (converter != "b2d") && (converter != "d2h")) {
+        exit(1);
+    }
 
     // If user enters inputs correctly. argv[2] should equal the string being converted
     // argv command line format is: <file_path/executable_file> <converter> <value>
@@ -100,12 +101,11 @@ string dec2bh(string sdec, char bh) {
 // Example: 1101100 (108 in base 10)
 // Binary to decimal
 int bin2d(string binstring) {
-    string bin_string = "1101100";
     int decimal = 0;
-    int n = bin_string.size();
+    int n = binstring.size();
 
     for (int i = 0; i < n; i++) {
-        if (bin_string[i] == '1') {
+        if (binstring[i] == '1') {
             // Do necessary conversion. Base is 2 for decimal & power is the index from the right
             decimal += pow(2, n - 1 - i);
         }
