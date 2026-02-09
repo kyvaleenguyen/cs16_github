@@ -33,10 +33,13 @@ int main ( int argc, char *argv[] ) {
     }
 
     // If converter = "d2b" or "d2h" & value != an integer end program
-    bool isInteger == true;
-    if ((converter == "d2b" && value != isInteger) || (converter == "d2h" && value != isInteger)) {
-        exit(1);
+    for (int i = 0; i < value.size(); i++) {
+        // If character is not between 0 and 9, not a valid decimal
+        if ((value[i] < '0') || (value[i] > '9')) {
+            exit(1); 
+        }
     }
+
 
     // If user enters inputs correctly. argv[2] should equal the string being converted
     // Argv command line format is: <file_path/executable_file> <converter> <value>
@@ -63,6 +66,15 @@ int main ( int argc, char *argv[] ) {
 // Post-condition: the value converted from a decimal to binary or decimal to hexadecimal value will be printed
 // Decimal to binary & hexadecimal
 string dec2bh(string sdec, char bh) {
+    // Check if proper decimal integer was entered. If not, exit program
+    string digits = "0123456789";
+    for (int i = 0; i < sdec.size(); i++) {
+        // Exit if any character is not a digit
+        if (sdec[i] < '0' || sdec[i] > '9') {
+            exit(1);
+        }
+    }
+
     // Convert decimal string to int
     int decimal = 0;
     for (int i = 0; i < sdec.size(); i++) {
@@ -108,6 +120,14 @@ string dec2bh(string sdec, char bh) {
 // Post-condition: the value converted from a binary to decimal value will be printed
 // Binary to decimal
 int bin2d(string binstring) {
+    // Check if binstring does not have 0 or 1 binary characters. If any character other than 0 or 1 present, exit program
+    for (int i = 0; i < binstring.size(); i++) {
+        if ((binstring[i] != '0') && (binstring[i] != '1')) {
+            exit(1);
+        }
+    }
+
+    // Creating decimal integer to prepare for conversion from binary to decimal. The converted values will be stored in decimal
     int decimal = 0;
     int n = binstring.size();
 
