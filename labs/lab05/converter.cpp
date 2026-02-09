@@ -27,8 +27,14 @@ int main ( int argc, char *argv[] ) {
     string converter = argv[1];
     string value = argv[2];
 
-    // If command line input != decimal to hexadecimal conversion, decimal to binary conversion, binary to decimal end program
+    // If converter != "d2b" "b2d" "d2h" end program
     if ((converter != "d2b") && (converter != "b2d") && (converter != "d2h")) {
+        exit(1);
+    }
+
+    // If converter = "d2b" or "d2h" & value != an integer end program
+    bool isInteger == true;
+    if ((converter == "d2b" && value != isInteger) || (converter == "d2h" && value != isInteger)) {
         exit(1);
     }
 
