@@ -23,7 +23,7 @@ int main ( int argc, char *argv[] ) {
         return 1;
     }
 
-    // Argv convresions
+    // Argv conversions
     string converter = argv[1];
     string value = argv[2];
 
