@@ -33,8 +33,7 @@ int main ( int argc, char *argv[] ) {
     }
 
     // If user enters inputs correctly. argv[2] should equal the string being converted
-    // argv command line format is: <file_path/executable_file> <converter> <value>
-
+    // Argv command line format is: <file_path/executable_file> <converter> <value>
     if (converter == "b2d") {
         // Binary to decimal
         cout << bin2d(value) << endl;
@@ -52,9 +51,10 @@ int main ( int argc, char *argv[] ) {
     return 0;
 }
 
-// MISSING FUNCTION DEFINITIONS HERE 
 // Make sure you have Pre-Conditions and Post-Conditions defined for each function you define here!
 
+// Pre-condition: user MUST enter 'd2b' or 'd2h' and then proper decimal string into command line
+// Post-condition: the value converted from a decimal to binary or decimal to hexadecimal value will be printed
 // Decimal to binary & hexadecimal
 string dec2bh(string sdec, char bh) {
     // Convert decimal string to int
@@ -98,7 +98,8 @@ string dec2bh(string sdec, char bh) {
     return new_value;
 }
 
-// Example: 1101100 (108 in base 10)
+//Pre-condition: user MUST enter 'b2d' and then proper binary string into command line. String entered MUST be only 1s or 0s.
+// Post-condition: the value converted from a binary to decimal value will be printed
 // Binary to decimal
 int bin2d(string binstring) {
     int decimal = 0;
