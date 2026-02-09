@@ -27,9 +27,9 @@ int main ( int argc, char *argv[] ) {
     string converter = argv[1];
     string value = argv[2];
 
-    // If converter != "d2b" "b2d" "d2h" end program
+    // If converter != "d2b" "b2d" "d2h" output error message and end program
     if ((converter != "d2b") && (converter != "b2d") && (converter != "d2h")) {
-        exit(1);
+        cerr << "Usage: converter <options: d2b, d2h, b2d> <value>";
     }
 
     // If converter = "d2b" or "d2h" & value != an integer end program
@@ -93,15 +93,17 @@ string dec2bh(string sdec, char bh) {
     switch (bh) {
         //if bh = 'b'
         case 'b': 
+            cout << "The value in binary is: ";
             base = 2;
             break;
         // If bh = 'h'
         case 'h': 
+            cout << "The value in hexadecimal is: ";
             base = 16;
             break;
         // If bh is not 'b' or 'h'
         default: 
-            return "Invalid base";
+            return "Wrong base";
     }
 
     // Conversion time
@@ -123,7 +125,7 @@ int bin2d(string binstring) {
     // Check if binstring does not have 0 or 1 binary characters. If any character other than 0 or 1 present, exit program
     for (int i = 0; i < binstring.size(); i++) {
         if ((binstring[i] != '0') && (binstring[i] != '1')) {
-            exit(1);
+            cerr << "Binary value contains non-binary digits.";
         }
     }
 
@@ -137,5 +139,7 @@ int bin2d(string binstring) {
             decimal += pow(2, n - 1 - i);
         }
     }
+    // Print new value
+    cout << "The value in decimal is: ";
     return decimal;
 }
