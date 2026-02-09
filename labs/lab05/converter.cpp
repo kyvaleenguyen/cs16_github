@@ -36,7 +36,7 @@ int main ( int argc, char *argv[] ) {
     for (int i = 0; i < value.size(); i++) {
         // If character is not between 0 and 9, not a valid decimal
         if ((value[i] < '0') || (value[i] > '9')) {
-            exit(1); 
+            cerr << "Usage: converter <options: d2b, d2h, b2d> <value>";
         }
     }
 
@@ -53,10 +53,9 @@ int main ( int argc, char *argv[] ) {
         // Decimal to hexadecimal
         cout << dec2bh(value, 'h') << endl;
     } else {
-        // End program
-        exit(1);
+        // Print error statement and end program
+        cerr << "Usage: converter <options: d2b, d2h, b2d> <value>";
     }
-
     return 0;
 }
 
