@@ -104,4 +104,5 @@ vector<string> split(string target, string delimiter) {
         }
         return substrings;
     }
+    return substrings;
 }
