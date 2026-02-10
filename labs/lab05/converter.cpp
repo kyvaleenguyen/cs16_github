@@ -1,19 +1,15 @@
 #include <iostream> // for cin, cout, endl
 #include <cstdlib>  // for exit()
 #include <cmath>    // for pow() function ONLY
-// YOU ARE NOT ALLOWED TO INCLUDE ANY OTHER LIBRARY!!! (zero grade penalty)
+
 using namespace std;
 
-// FUNCTION DECLARATIONS: YOU MUST DEFINE AND USE THESE (do not remove):
-//      You can declare/define other functions if you like as well,
-//      but you must use the 2 functions below.
 
 // Binary to decimal
 int bin2d(string binstring);
 
 // Decimal to binary & hexadecimal
 string dec2bh(string sdec, char bh);
-
 
 // The parameters within int main prompt the user to enter command line arguments
 int main ( int argc, char *argv[] ) {

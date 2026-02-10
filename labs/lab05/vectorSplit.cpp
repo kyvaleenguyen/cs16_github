@@ -7,7 +7,11 @@ using namespace std;
 // Function declaration
 vector<string> split(string target, string delimiter);
 
+/* Pre-condition: user must enter string to be split after being prompted by first getline command. In the second getline
+command, the user enters a delimiter string that MUST only be one character long.*/
 
+/*Post-condition: the split() function is run and formats the strings into a substring string vector according to what has
+been defined as the delimiter string in the getline command in the int main function.*/
 int main () {
     string target, delimiter;
     // Get string from user
