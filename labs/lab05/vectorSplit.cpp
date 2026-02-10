@@ -46,7 +46,6 @@ vector<string> split(string target, string delimiter) {
 
     // If delimiter is empty string
     if (delimiter == "") {
-        cout << "No substrings.";
         return substrings;
     }
 
@@ -59,7 +58,7 @@ vector<string> split(string target, string delimiter) {
 
     // If no delimiter in target
     if (target.find(delimiter) == string::npos) {
-        cout << "No substrings." << endl;
+        cout << "The substrings are: \"" << target << "\"" << endl;
         return substrings;
     }
 
