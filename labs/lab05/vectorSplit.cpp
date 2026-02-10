@@ -35,30 +35,31 @@ vector<string> split(string target, string delimiter) {
 
     // EDGE CASES @-@
     // If target & delimiter empty
-    if (target == "" && delimiter == "") {
+    /*if (target == "" && delimiter == "") {
         return substrings;
     }
 
     // If target is a single space & delimiter is empty string
     if (target == " " && delimiter == "") {
         return substrings;
-    }
+    }*/
 
     // If delimiter is empty string
     if (delimiter == "") {
         return substrings;
     }
 
-    // Print substrings
-    // If delimiter == target
-    if (target == delimiter) {
-        cout << "The substrings are:";
+    // If no delimiter in target
+    if (target.find(delimiter) == string::npos) {
+        cout << "No substrings." << endl;
         return substrings;
     }
 
-    // If no delimiter in target
-    if (target.find(delimiter) == string::npos) {
-        cout << "The substrings are: \"" << target << "\"" << endl;
+    // Print if delimiter found
+    cout << "The substrings are: ";
+
+    // If delimiter == target
+    if (target == delimiter) {
         return substrings;
     }
 
@@ -100,7 +101,6 @@ vector<string> split(string target, string delimiter) {
                substrings.push_back(formatted_substr); 
             }
         }
-        cout << "The substrings are: ";
         // Organize substrings with proper formatting and print statement, then return substrings
         for (int i=0; i < substrings.size(); i++) {
             cout << substrings[i];
