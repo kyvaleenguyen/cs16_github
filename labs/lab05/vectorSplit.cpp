@@ -35,10 +35,6 @@ vector<string> split(string target, string delimiter) {
     string word;
 
     // EDGE CASES @-@
-    // If target & delimiter empty
-    if (target == "" && delimiter == "") {
-        return substrings;
-    }
 
     // If target is a single space & delimiter is empty string
     if (target == " " && delimiter == "") {
