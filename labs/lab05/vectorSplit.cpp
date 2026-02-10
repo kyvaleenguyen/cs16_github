@@ -36,10 +36,17 @@ vector<string> split(string target, string delimiter) {
     vector<string> substrings;
     string word;
 
+    // If delimiter is empty string
+    if (delimiter == "") {
+        cerr << "No substrings.";
+        return substrings;
+    }
+
     // Print substrings
     // If no substrings
     if (target.find(delimiter) == string::npos) {
         cerr << "No substrings.";
+        return substrings;
     }
 
     // If there are substrings
@@ -80,12 +87,12 @@ vector<string> split(string target, string delimiter) {
                substrings.push_back(formatted_substr); 
             }
         }
-            cout << "The substrings are: ";
+        cout << "The substrings are: ";
+        // Organize substrings with proper formatting and print statement, then return substrings
+        for (int i=0; i < substrings.size(); i++) {
+            cout << substrings[i];
+        }
+        return substrings;
+    }
 
-    }
-    // Organize substrings with proper formatting and print statement, then return substrings
-    for (int i=0; i < substrings.size(); i++) {
-        cout << substrings[i];
-    }
-    return substrings;
 }
