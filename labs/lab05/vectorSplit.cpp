@@ -21,10 +21,7 @@ int main () {
     // Enter string delimiter
     cout << "Enter delimiter string:" << endl;
     getline(cin, delimiter);
-    // If delimiter entered has a character value of more than one, exit the program
-    if (delimiter.size() > 1) {
-        cerr << "Delimiter must only be one character.";
-    }
+
     // Split function call
     split(target, delimiter);
     return 0;
@@ -36,6 +33,17 @@ vector<string> split(string target, string delimiter) {
     vector<string> substrings;
     string word;
 
+    // EDGE CASES @-@
+    // If target & delimiter empty
+    if (target == "" && delimiter == "") {
+        exit(1);
+    }
+    
+    // If target is a single space & delimiter is empty string
+    if (target == " " && delimiter == "") {
+        exit(1);
+    }
+
     // If delimiter is empty string
     if (delimiter == "") {
         cerr << "No substrings.";
@@ -43,9 +51,14 @@ vector<string> split(string target, string delimiter) {
     }
 
     // Print substrings
+    // If substring == target
+    if (target == delimiter) {
+        cout << "The substrings are:" << endl;
+        return substrings;
+    }
     // If no substrings
     if (target.find(delimiter) == string::npos) {
-        cerr << "No substrings.";
+        cout << "No substrings." << endl;
         return substrings;
     }
 
