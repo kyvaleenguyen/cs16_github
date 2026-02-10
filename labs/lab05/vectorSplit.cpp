@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <string>
 #include <vector>
@@ -28,51 +27,42 @@ int main () {
     return 0;
 }
 
-// Split function definition
 vector<string> split(string target, string delimiter) {
     // Variable declarations
     vector<string> substrings;
-    string word;
 
     // EDGE CASES @-@
 
-    // If delimiter empty
+    // if delimiter empty
     if (delimiter == "") {
+        return substrings; 
+    }
+
+    // if delimiter not present in target
+    if (target.find(delimiter) == string::npos) {
+        cout << "No substrings." << endl;
         return substrings;
     }
 
-    // If delimiter in target
-    if (target.find(delimiter) != string::npos) {
-        cout << "The substrings are: ";
-    } else {
-        cout << "No substrings.";
-        return substrings;
-    }
+    // If delimiter found print header "The substrings are: "
+    cout << "The substrings are: ";
 
-    // If target == delimite
+    // Edge case: target == delimiter
     if (target == delimiter) {
         return substrings;
     }
 
     // If there are substrings
     // Create substrings vector and word string to store substrings in and add to substrings vector
-    // Control size of substrings vector to save memory
-    substrings.reserve(target.size());
-    // Integer to set start of target index for substrings to 0
     int start = 0;
-    for (int i = 0; i < target.size(); i++) {
-        // If delimiter found at index i in target and if the substr size is greater than 0
+    for (int i = 0; i < (int)target.size(); i++) {
         if (target[i] == delimiter[0]) {
             // If the word found is not an empty string, add it to the substrings vector
-            word = target.substr(start, i - start);
+            string word = target.substr(start, i - start);
+            // If word isnt the first element, add comma to last substring
             if (word != "") {
-                word.insert(0, "\"");
-                word.insert(word.size(), "\"");
-                // If word isnt the first element, add comma to last substring
-                if (substrings.size() > 0) {
-                    substrings.back() += ", ";
-                }
-                substrings.push_back(word);
+                if (substrings.size() > 0) substrings.back() += ", ";
+                substrings.push_back("\"" + word + "\"");
             }
             // Change start index if delimiter found
             start = i + 1;
@@ -80,19 +70,16 @@ vector<string> split(string target, string delimiter) {
     }
 
     // Get last substring after last delimiter & make sure the last word found isn't an empty string
-    if (start < target.size()) {
-        string last_substr = target.substr(start);
-        if (last_substr != "") {
-            string formatted_substr = "\"" + last_substr + "\"";
-            // Add comma before last substring 
-            if (substrings.size() > 0) {
-                substrings.back() += ", ";
-            }
-            substrings.push_back(formatted_substr); 
+    if (start < (int)target.size()) {
+        string last = target.substr(start);
+        if (last != "") {
+            if (substrings.size() > 0) substrings.back() += ", ";
+            substrings.push_back("\"" + last + "\"");
         }
     }
-    // Organize substrings with proper formatting and print statement, then return substrings
-    for (int i=0; i < substrings.size(); i++) {
+
+    // Print formatted substrings
+    for (int i = 0; i < (int)substrings.size(); i++) {
         cout << substrings[i];
     }
     return substrings;
