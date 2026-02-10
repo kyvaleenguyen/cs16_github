@@ -57,7 +57,7 @@ vector<string> split(string target, string delimiter) {
                 if (word != "") {
                     word.insert(0, "\"");
                     word.insert(word.size(), "\"");
-                    // If word isnt the first element, add comma to last element
+                    // If word isnt the first element, add comma to last substring
                     if (substrings.size() > 0) {
                         substrings.back() += ", ";
                     }
@@ -73,6 +73,10 @@ vector<string> split(string target, string delimiter) {
             string last_substr = target.substr(start);
             if (last_substr != "") {
                string formatted_substr = "\"" + last_substr + "\"";
+               // Add comma before last substring 
+               if (substrings.size() > 0) {
+                   substrings.back() += ", ";
+               }
                substrings.push_back(formatted_substr); 
             }
         }
