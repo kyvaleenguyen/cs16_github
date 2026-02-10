@@ -51,10 +51,6 @@ vector<string> split(string target, string delimiter) {
                 // If the word found is not an empty string, add it to the substrings vector
                 word = target.substr(start, i - start);
                 if (word != "") {
-                    word.insert(0, "\"");
-                    word.insert(word.size(), "\"");
-                    // Insert comma after word found
-                    word.insert(word.size(), ", ");
                     substrings.push_back(word);
                 }
                 // Change start index if delimiter found
@@ -65,7 +61,7 @@ vector<string> split(string target, string delimiter) {
         if (start < target.size()) {
             string last_substr = target.substr(start);
             if (word != "") {
-               string formatted_substr = "\"" + last_substr + "\"";
+               string formatted_substr = last_substr;
                substrings.push_back(formatted_substr); 
             }
         }
