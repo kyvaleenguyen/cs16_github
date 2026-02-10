@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -34,20 +35,8 @@ vector<string> split(string target, string delimiter) {
     string word;
 
     // EDGE CASES @-@
-    // If delimiter == target
-    if (target == delimiter) {
-        cout << "The substrings are:";
-        return substrings;
-    }
-
-    // If delimiter is empty string
-    if (delimiter == "") {
-        return substrings;
-    }
-
-    // If no delimiter in target
-    if (target.find(delimiter) == string::npos) {
-        cout << "The substrings are: \"" << target << "\"" << endl;
+    // If target & delimiter empty
+    if (target == "" && delimiter == "") {
         return substrings;
     }
 
@@ -56,8 +45,21 @@ vector<string> split(string target, string delimiter) {
         return substrings;
     }
 
-    // If target & delimiter empty
-    if (target == "" && delimiter == "") {
+    // If delimiter is empty string
+    if (delimiter == "") {
+        return substrings;
+    }
+
+    // Print substrings
+    // If delimiter == target
+    if (target == delimiter) {
+        cout << "The substrings are:";
+        return substrings;
+    }
+
+    // If no delimiter in target
+    if (target.find(delimiter) == string::npos) {
+        cout << "The substrings are: \"" << target << "\"" << endl;
         return substrings;
     }
 
