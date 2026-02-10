@@ -63,8 +63,6 @@ int main ( int argc, char *argv[] ) {
     return 0;
 }
 
-// Make sure you have Pre-Conditions and Post-Conditions defined for each function you define here!
-
 // Pre-condition: user MUST enter 'd2b' or 'd2h' and then proper decimal string into command line
 // Post-condition: the value converted from a decimal to binary or decimal to hexadecimal value will be printed
 // Decimal to binary & hexadecimal

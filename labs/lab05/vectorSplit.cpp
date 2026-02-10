@@ -50,12 +50,11 @@ vector<string> split(string target, string delimiter) {
             if ((target[i] == delimiter[0]) && ((i-start)>=0)) {
                 // If the word found is not an empty string, add it to the substrings vector
                 word = target.substr(start, i - start);
-                word.insert(0, "\"");
-                word.insert(word.size(), "\"");
-                // Insert comma after word found
-                word.insert(word.size(), ", ");
-                // If the word is not an empty string, add it to the substrings string vector
                 if (word != "") {
+                    word.insert(0, "\"");
+                    word.insert(word.size(), "\"");
+                    // Insert comma after word found
+                    word.insert(word.size(), ", ");
                     substrings.push_back(word);
                 }
                 // Change start index if delimiter found
@@ -70,7 +69,8 @@ vector<string> split(string target, string delimiter) {
                substrings.push_back(formatted_substr); 
             }
         }
-        cout << "The substrings are: ";
+            cout << "The substrings are: ";
+
     }
     // Organize substrings with proper formatting and print statement, then return substrings
     for (int i=0; i < substrings.size(); i++) {

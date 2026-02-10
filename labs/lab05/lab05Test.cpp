@@ -26,11 +26,140 @@ vector<string> split(string target, string delimiter);
 int bin2d(string binstring);
 string dec2bh(string sdec, char bh);
 
-// THE FOLLOWING DEFINITIONS FOR THE 3 FUNCTIONS ARE STUBS.
-// REMOVE THEM AND THEN COPY YOUR OWN 3 FUNCTION DEFINITIONS:
-vector<string> split(string target, string delimiter) {vector<string> v; return v;}
-int bin2d(string binstring) {return -1;}
-string dec2bh(string sdec, char bh) {return "-1";}
+// FUNCTION DEFINITIONS
+
+// Split function definition
+vector<string> split(string target, string delimiter) {
+    // Variable declarations
+    vector<string> substrings;
+    string word;
+
+    // Print substrings
+    // If no substrings
+    if (target.find(delimiter) == string::npos) {
+        cerr << "No substrings.";
+    }
+
+    // If there are substrings
+    if (target.find(delimiter) != string::npos) {
+        // Create substrings vector and word string to store substrings in and add to substrings vector
+        // Control size of substrings vector to save memory
+        substrings.reserve(target.size());
+        // Integer to set start of target index for substrings to 0
+        int start = 0;
+        for (int i = 0; i < target.size(); i++) {
+            // If delimiter found at index i in target and if the substr size is greater than 0
+            if ((target[i] == delimiter[0]) && ((i-start)>=0)) {
+                // If the word found is not an empty string, add it to the substrings vector
+                word = target.substr(start, i - start);
+                if (word != "") {
+                    // Insert comma after word found
+                    substrings.push_back(word);
+                }
+                // Change start index if delimiter found
+                start = i + 1;
+            }
+        }
+        // Get last substring after last delimiter & make sure the last word found isn't an empty string
+        if (start < target.size()) {
+            string last_substr = target.substr(start);
+            if (word != "") {
+               string formatted_substr = last_substr;
+               substrings.push_back(formatted_substr); 
+            }
+        }
+            cout << "The substrings are: ";
+
+    }
+    // Organize substrings with proper formatting and print statement, then return substrings
+    for (int i=0; i < substrings.size(); i++) {
+        cout << substrings[i];
+    }
+    return substrings;
+}
+
+// Pre-condition: user MUST enter 'd2b' or 'd2h' and then proper decimal string into command line
+// Post-condition: the value converted from a decimal to binary or decimal to hexadecimal value will be printed
+// Decimal to binary & hexadecimal
+string dec2bh(string sdec, char bh) {
+    // Check if proper decimal integer was entered. If not, exit program
+    string digits = "0123456789";
+    for (int i = 0; i < sdec.size(); i++) {
+        // Exit if any character is not a digit
+        if (sdec[i] < '0' || sdec[i] > '9') {
+            exit(1);
+        }
+    }
+
+    // Convert decimal string to int
+    int decimal = 0;
+    for (int i = 0; i < sdec.size(); i++) {
+        int digit = sdec[i] - '0';
+        decimal = (decimal * 10) + digit;
+    }
+    // Check if decimal is already 0
+    if (decimal == 0) {
+        return "0";
+    }
+
+    // Declaring base int to get ready for binary or hexadecimal conversion
+    int base;
+
+    // Switch case for binary & hexadecimal conversions
+    switch (bh) {
+        //if bh = 'b'
+        case 'b': 
+            cout << "The value in binary is: ";
+            base = 2;
+            break;
+        // If bh = 'h'
+        case 'h': 
+            cout << "The value in hexadecimal is: ";
+            base = 16;
+            break;
+        // If bh is not 'b' or 'h'
+        default: 
+            return "Wrong base";
+    }
+
+    // Conversion time
+    string new_value = "";
+    string hex_digits = "0123456789ABCDEF";
+
+    while (decimal > 0) {
+        new_value = hex_digits[decimal % base] + new_value;
+        decimal /= base;
+    }
+    // Return new value
+    return new_value;
+}
+
+//Pre-condition: user MUST enter 'b2d' and then proper binary string into command line. String entered MUST be only 1s or 0s.
+// Post-condition: the value converted from a binary to decimal value will be printed
+// Binary to decimal
+int bin2d(string binstring) {
+    // Check if binstring does not have 0 or 1 binary characters. If any character other than 0 or 1 present, exit program
+    for (int i = 0; i < binstring.size(); i++) {
+        if ((binstring[i] != '0') && (binstring[i] != '1')) {
+            cerr << "Binary value contains non-binary digits.";
+            exit(1);
+        }
+    }
+
+    // Creating decimal integer to prepare for conversion from binary to decimal. The converted values will be stored in decimal
+    int decimal = 0;
+    int n = binstring.size();
+
+    for (int i = 0; i < n; i++) {
+        if (binstring[i] == '1') {
+            // Do necessary conversion. Base is 2 for decimal & power is the index from the right
+            decimal += pow(2, n - 1 - i);
+        }
+    }
+    // Print new value
+    cout << "The value in decimal is: ";
+    return decimal;
+}
 
 
 int main() {
