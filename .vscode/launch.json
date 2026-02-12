@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/kyval/cs16_github/labs/lab04",
-      "program": "c:/Users/kyval/cs16_github/labs/lab04/build/Debug/outDebug",
+      "cwd": "c:/Users/kyval/cs16_github/labs/lab05",
+      "program": "c:/Users/kyval/cs16_github/labs/lab05/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
