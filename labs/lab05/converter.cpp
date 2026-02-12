@@ -16,7 +16,7 @@ int main ( int argc, char *argv[] ) {
     // Check to see if the command-line arguments are being used correctly
     // If there are not 3 arguments being used in the command line, exit the program
     if (argc != 3) {
-        cerr << "Usage: converter <options: d2b, d2h, b2d> <value>";
+        cerr << "Usage: converter <options: d2b, d2h, b2d> <value>" << endl;
         exit(1);
     }
 
@@ -26,7 +26,7 @@ int main ( int argc, char *argv[] ) {
 
     // If converter != "d2b" "b2d" "d2h" output error message and end program
     if ((converter != "d2b") && (converter != "b2d") && (converter != "d2h")) {
-        cerr << "Usage: converter <options: d2b, d2h, b2d> <value>";
+        cerr << "Usage: converter <options: d2b, d2h, b2d> <value>" << endl;
         exit(1);
     }
 
@@ -34,7 +34,7 @@ int main ( int argc, char *argv[] ) {
     for (int i = 0; i < value.size(); i++) {
         // If character is not between 0 and 9, not a valid decimal
         if ((value[i] < '0') || (value[i] > '9')) {
-            cerr << "Usage: converter <options: d2b, d2h, b2d> <value>";
+            cerr << "Usage: converter <options: d2b, d2h, b2d> <value>" << endl;
             exit(1);
         }
     }
@@ -53,7 +53,7 @@ int main ( int argc, char *argv[] ) {
         cout << dec2bh(value, 'h') << endl;
     } else {
         // Print error statement and end program
-        cerr << "Usage: converter <options: d2b, d2h, b2d> <value>";
+        cerr << "Usage: converter <options: d2b, d2h, b2d> <value>" << endl;
         exit(1);
     }
     return 0;
