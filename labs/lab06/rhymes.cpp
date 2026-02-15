@@ -24,7 +24,7 @@ int main() {
 
     // If opening file fails
     if (in.fail()) {
-        cerr << "Input file opening failed." << endl; 
+        cerr << "Cannot open " << file_name << endl; 
         exit(1); 
     }
 
