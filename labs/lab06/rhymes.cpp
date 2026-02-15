@@ -29,7 +29,7 @@ int main() {
     }
 
     // Read the lines in your file and check on rhyming, per our definition
-
+    input_stream << 
 
     // Finally, print the results (see lab descriptions for examples)
     // output_stream << 
@@ -46,14 +46,21 @@ int main() {
 // Post-condition: The function returns the last word found in the string. If there are no spaces, the whole string is returned
 //      Note: the string MUST be a string (no numbers??)
 string findLastWord(string line){
+    int words = 1;
+    int start = 0;
     for (int i = 0; i < line.size()) {
-        int words = 1;
-        if (line[i] == " ") {
+        if (line[i] == " " && i != 0) {
             words += 1;
         }
     }
+    string word_list[words] = {};
+    for (int i = 0; i < words; i++) {
+        if ((line[i] == " ") && (i != 0)) {
+            word_list[i] = line.substr(start, i - start);
+        }
+    }
     // Return last word in string line
-    return line[words.size()];
+    return word_list[words];
 }
 
 
