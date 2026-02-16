@@ -6,30 +6,71 @@
 using namespace std;
 
 // Function declarations
-// NOTE: these function declarations are exactly the same as from lab04
+// NOTE: the 1st 4 function declarations are exactly the same as from lab04
+// Functions from lab4
 void bubbleSort(int *, int);
 double findAverage(int *, int);
 double findMedian(int *, int);
 double findStdDev(int *, int, double);
+
+// New functions
+// Function to add multiple int values read from file
+int ArraySum(const string& file_name) {
+    // Create ifstream to read from file
+    ifstream in_stream(file_name);
+    if (!in_file.is_open()) {
+        cerr << "Cannot open " << file_name << endl;
+        return 0;
+    }
+    int sum = 0;
+    int int_val;
+    while (in_file >> int_val) {
+        sum++;
+    }
+    in_stream.close();
+    return sum;
+}
 
 int main () {
     // Set precision
     cout << fixed << showpoint;
     cout << setprecision(2);
 
-    // Input & output streams
-    ifstream in_stream;
+    // Input & output streams, file name string declaration
     ofstream out_stream;
+    string file_name;
 
     // Get file name from user and open file
     in_stream << getline(cin, file_name);
     in_stream.open(file_name);
 
     // If opening file fails
-    if (in.fail()) {
-        cerr << "Cannot open " << file_name << endl; 
-        exit(1); 
+    if (!in_file.is_open()) {
+        cerr << "Cannot open " << file_name << endl;
+        return 0;
     }
+
+    // Organize data
+    // Get total number of integers in file
+    int total_ints = ArraySum(file_name);
+    // Check if total_ints = 0 & file actually has integer values
+    if (total_ints == 0) {
+        return 1;
+    }
+
+    // Create dynamic array of size total_ints using new()
+    int* newArray = new int[total_ints];
+
+    // Creating appropriate variables for file
+    // Get array size by reading inputs from txt file
+    for (int i = 0; i < total_ints; i++) {
+        in_stream >> newArray[i];
+    }
+
+    // Create int array of size sum
+    
+
+    // Reading from file
 
 
     return 0;
