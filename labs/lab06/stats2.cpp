@@ -20,16 +20,14 @@ int arrayCount(const string& file_name) {
     // Create ifstream to read from file
     ifstream in_stream(file_name);
     if (!in_stream.is_open()) {
-        cerr << "Cannot open " << file_name << endl;
-        return 0;
+        return -1;
     }
-    int sum = 0;
+    int count = 0;
     int int_val;
     while (in_stream >> int_val) {
-        sum++;
+        count++;
     }
-    in_stream.close();
-    return sum;
+    return count;
 }
 
 int main () {
@@ -38,14 +36,18 @@ int main () {
     ofstream out_stream;
     string file_name;
 
-    // Get file name from user and open 
+    // Get file name from user and open ifstream
     cout << "Enter file name: ";
     getline(cin, file_name);
     in_stream.open(file_name);
 
+    // Open ofstream & print get file name line
+    out_stream.open("results.txt");
+    out_stream << "Enter file name: " << file_name << endl;
+
     // If opening file fails
     if (!in_stream.is_open()) {
-        cerr << "Cannot open " << file_name << endl;
+        out_stream << "Cannot open " << file_name;
         return 0;
     }
 
@@ -54,6 +56,7 @@ int main () {
     int total_ints = arrayCount(file_name);
     // Check if total_ints = 0 & file actually has integer values
     if (total_ints <= 0) {
+        out_stream << "Cannot open " << file_name;
         return 1;
     }
 
@@ -71,10 +74,6 @@ int main () {
     }
     // Close input file
     in_stream.close();
-
-    // Open output file
-    // Print array in ofstream
-    out_stream.open("results.txt");
     
     // Set precision
     out_stream << fixed << showpoint;
@@ -107,10 +106,10 @@ int main () {
 }
 
 // Function Definitions
-// NOTE: these function declarations are exactly the same as my function declarations from lab04. (Except for bubbleSort which was given to us in lab04)
+// NOTE: these function declarations are exactly the same as my function declarations from lab04. (bubbleSort which was given in lab04)
 // :)
 
-// bubbleSort function declaration
+// BubbleSort function declaration
 void bubbleSort(int *array, int size) {
   bool swapped = true;
   int j = 0;
@@ -130,7 +129,7 @@ void bubbleSort(int *array, int size) {
   }
 }
 
-// findAverage function declaration
+// FindAverage function declaration
 double findAverage(int *array, int size) {
   double sum = 0.0;
   for (int i = 0; i < size; i++) {
@@ -139,7 +138,7 @@ double findAverage(int *array, int size) {
   return sum / size;
 }
 
-// findMedian function declaration
+// FindMedian function declaration
 double findMedian(int *array, int size) {
     if (size % 2 == 0) {
       // Average of middle two is average
@@ -152,7 +151,7 @@ double findMedian(int *array, int size) {
     }
 }
 
-// findStdDev functiond declaration
+// FindStdDev functiond declaration
 double findStdDev(int *array, int size, double average) {
     double sum_of_squares = 0.0;
     for (int i = 0; i < size; i++) {
