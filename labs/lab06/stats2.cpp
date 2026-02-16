@@ -1,5 +1,6 @@
 #include <fstream>
 #include <iostream>
+#include <string>
 #include <iomanip> //required for set precision
 #include <cmath> // required for pow() (pow is the only function usable from cmath)
 
@@ -15,16 +16,16 @@ double findStdDev(int *, int, double);
 
 // New functions
 // Function to add multiple int values read from file
-int ArraySum(const string& file_name) {
+int arrayCount(const string& file_name) {
     // Create ifstream to read from file
     ifstream in_stream(file_name);
-    if (!in_file.is_open()) {
+    if (!in_stream.is_open()) {
         cerr << "Cannot open " << file_name << endl;
         return 0;
     }
     int sum = 0;
     int int_val;
-    while (in_file >> int_val) {
+    while (in_stream >> int_val) {
         sum++;
     }
     in_stream.close();
@@ -37,24 +38,26 @@ int main () {
     cout << setprecision(2);
 
     // Input & output streams, file name string declaration
+    ifstream in_stream;
     ofstream out_stream;
     string file_name;
 
-    // Get file name from user and open file
-    in_stream << getline(cin, file_name);
+    // Get file name from user and open 
+    cout << "Enter file name: ";
+    getline(cin, file_name);
     in_stream.open(file_name);
 
     // If opening file fails
-    if (!in_file.is_open()) {
+    if (!in_stream.is_open()) {
         cerr << "Cannot open " << file_name << endl;
         return 0;
     }
 
     // Organize data
     // Get total number of integers in file
-    int total_ints = ArraySum(file_name);
+    int total_ints = arrayCount(file_name);
     // Check if total_ints = 0 & file actually has integer values
-    if (total_ints == 0) {
+    if (total_ints <= 0) {
         return 1;
     }
 
@@ -62,16 +65,31 @@ int main () {
     int* newArray = new int[total_ints];
 
     // Creating appropriate variables for file
-    // Get array size by reading inputs from txt file
+    // Populate dynaymic array by reading inputs from txt file
     for (int i = 0; i < total_ints; i++) {
         in_stream >> newArray[i];
     }
+    // Close input file
+    in_stream.close();
 
-    // Create int array of size sum
-    
+    // Sort found data
+    bubbleSort(newArray, total_ints);
+    // Function calls to find average, median, & std_dev
+    double avg = findAverage(newArray, total_ints);
+    double median = findMedian(newArray, total_ints);
+    double std_dev = findStdDev(newArray, total_ints, average);
 
-    // Reading from file
+    // Print array in ofstream
+    out_stream("results.txt");
+    for (int i = 0; i < total_ints; i++) {
+        out_stream << newArray[i] << " ";
+    }
+    // Close output file
+    out_stream.close();
 
+    // Delete dynamic array
+    delete[] newArray;
+    newArray = nullptr;
 
     return 0;
 }
