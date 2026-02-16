@@ -1,0 +1,5 @@
+Here are some statistics:
+	N: 5
+Average: 6.20
+ Median: 8.00
+ StdDev: 3.56

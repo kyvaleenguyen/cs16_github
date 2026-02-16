@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip> //required for set precision
-#include <cmath> // required for pow() (pow is the only function usable from cmath)
+#include <cmath> // for calculations
 
 using namespace std;
 
@@ -33,10 +33,6 @@ int arrayCount(const string& file_name) {
 }
 
 int main () {
-    // Set precision
-    cout << fixed << showpoint;
-    cout << setprecision(2);
-
     // Input & output streams, file name string declaration
     ifstream in_stream;
     ofstream out_stream;
@@ -61,6 +57,10 @@ int main () {
         return 1;
     }
 
+    // Reset stream
+    in_stream.clear();
+    in_stream.seekg(0, ios::beg);
+
     // Create dynamic array of size total_ints using new()
     int* newArray = new int[total_ints];
 
@@ -72,18 +72,30 @@ int main () {
     // Close input file
     in_stream.close();
 
+    // Open output file
+    // Print array in ofstream
+    out_stream.open("results.txt");
+    
+    // Set precision
+    out_stream << fixed << showpoint;
+    out_stream << setprecision(2);
+
     // Sort found data
     bubbleSort(newArray, total_ints);
     // Function calls to find average, median, & std_dev
+    out_stream << "Here are some statistics:" << endl;
+    // # of values in array
+    out_stream << "\tN: " << total_ints << endl;
+    // average
     double avg = findAverage(newArray, total_ints);
+    out_stream << "Average: " << avg << endl;
+    // median
     double median = findMedian(newArray, total_ints);
-    double std_dev = findStdDev(newArray, total_ints, average);
-
-    // Print array in ofstream
-    out_stream("results.txt");
-    for (int i = 0; i < total_ints; i++) {
-        out_stream << newArray[i] << " ";
-    }
+    out_stream << " Median: " << median << endl;
+    // std_dev
+    double std_dev = findStdDev(newArray, total_ints, avg);
+    out_stream << " StdDev: " << std_dev;
+    
     // Close output file
     out_stream.close();
 
