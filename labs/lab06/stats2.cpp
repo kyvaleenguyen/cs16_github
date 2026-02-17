@@ -41,14 +41,10 @@ int main () {
     getline(cin, file_name);
     in_stream.open(file_name);
 
-    // Open ofstream & print get file name line
-    out_stream.open("stats2_results.txt");
-    out_stream << "Enter filename: " << file_name << endl;
-
     // If opening file fails
     if (!in_stream.is_open()) {
-        out_stream << "Cannot open " << file_name;
-        return 0;
+        cerr << "Cannot open " << file_name;
+        exit(1);
     }
 
     // Organize data
@@ -56,13 +52,9 @@ int main () {
     int total_ints = arrayCount(file_name);
     // Check if total_ints = 0 & file actually has integer values
     if (total_ints <= 0) {
-        out_stream << "Cannot open " << file_name;
-        return 1;
+        cerr << "Cannot open " << file_name;
+        exit(1);
     }
-
-    // Reset stream
-    in_stream.clear();
-    in_stream.seekg(0, ios::beg);
 
     // Create dynamic array of size total_ints using new()
     int* newArray = new int[total_ints];
@@ -74,6 +66,10 @@ int main () {
     }
     // Close input file
     in_stream.close();
+
+    // Open ofstream & print get file name line
+    out_stream.open("stats2_results.txt");
+    out_stream << "Enter filename: " << file_name << endl;
     
     // Set precision
     out_stream << fixed << showpoint;

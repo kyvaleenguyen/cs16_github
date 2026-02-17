@@ -66,20 +66,20 @@ string findLastWord(string line) {
         // Iterate in reverse through each character in the line until a space is found
         for (int i = line.length(); i > 0; i--) {
             // If a space is found in the line, make sure that it is not at the beginning or end of the line because it can't be counted as a word
-            if ((line.find(" ")) && (line.find(" ") < line.length()) && (line.find(" ") > 0)) {
+            if (line.find(" ") == i) {
                 // Take substring of line and assign it to the last_word string
                 last_word = line.substr(i, line.length() - i);
-                return last_word;
             }
         }
     }
+    return last_word;
 }
 
 
-// Pre-condition: 
-// Post-condition: 
+// Pre-condition: substrings must already be find in find last word
+// Post-condition: lowers capitalization for all words
 void cleanUp(string &word) {
-
+    
 }
 
 

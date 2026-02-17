@@ -1,6 +1,6 @@
-Enter file name: nums2.txt
+Enter filename: nums1.txt
 Here are some statistics:
-	N: 12
-Average: 87.50
- Median: 89.00
- StdDev: 9.26
+	N: 5
+Average: 6.20
+ Median: 8.00
+ StdDev: 3.56
