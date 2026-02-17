@@ -25,7 +25,7 @@ int main() {
     in_stream.open(file_name);
 
     // Get lines from input file
-    in_stream >> 
+    // in_stream >> 
 
     // Open ofstream & print get file name line
     out_stream.open("rhymes_results.txt");
@@ -38,7 +38,7 @@ int main() {
     }
 
     // Read the lines in your file and check on rhyming, per our definition
-    in_stream << 
+    in_stream >> findLastWord(file_name);
 
     // Finally, print the results (see lab descriptions for examples)
     // output_stream << 
@@ -57,7 +57,6 @@ int main() {
 string findLastWord(string line) {
     // Create ifstream to read lines from
     ifstream in_stream;
-    string line;
     string last_word;
     // Iterate through each line in the file
     while (getline(in_stream, line)) {
@@ -67,29 +66,10 @@ string findLastWord(string line) {
             if ((line.find(" ")) && (line.find(" ") < line.length()) && (line.find(" ") > 0)) {
                 // Take substring of line and assign it to the last_word string
                 last_word = line.substr(i, line.length() - i);
+                return last_word;
             }
         }
-
     }
-
-
-
-
-    int words = 1;
-    int start = 0;
-    for (int i = 0; i < line.size()) {
-        if (line[i] == " " && i != 0) {
-            words += 1;
-        }
-    }
-    string word_list[words] = {};
-    for (int i = 0; i < words; i++) {
-        if ((line[i] == " ") && (i != 0)) {
-            word_list[i] = line.substr(start, i - start);
-        }
-    }
-    // Return last word in string line
-    return word_list[words];
 }
 
 
@@ -103,6 +83,6 @@ void cleanUp(string &word) {
 // Pre-condition: 
 // Post-condition: 
 bool compareWords(string word1, string word2) {
-
+    string comparison;
+    return true;
 }
-

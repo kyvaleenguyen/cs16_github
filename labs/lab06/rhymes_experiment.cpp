@@ -1,3 +1,4 @@
+#include <fstream>
 #include <iostream>
 #include <string>
 
@@ -19,6 +20,10 @@ int main () {
         cout << wordle[i] << endl;
     }
 
+    // findLastWord function call test
+    string bunga;
+    findLastWord(bunga);
+
     return 0;
 }
 
@@ -26,21 +31,38 @@ int main () {
 // There MUST already be AT LEAST one word in the string. 
 // Post-condition: The function returns the last word found in the string. If there are no spaces, the whole string is returned
 //      Note: the string MUST be a string (no numbers??)
+/*string findLastWord(string line) {
+    // Create ifstream to read lines from
+    ifstream in_stream;
+    string last_word;
+    // Iterate through each line in the file
+    while (getline(in_stream, line)) {
+        // Iterate in reverse through each character in the line until a space is found
+        for (int i = line.length(); i > 0; i--) {
+            // If a space is found in the line, make sure that it is not at the beginning or end of the line because it can't be counted as a word
+            if ((line.find(" ")) && (line.find(" ") < line.length()) && (line.find(" ") > 0)) {
+                // Take substring of line and assign it to the last_word string
+                last_word = line.substr(i, line.length() - i);
+            }
+        }
+    }
+    return last_word;
+    }*/
+
 string findLastWord(string line) {
-    int words = 1;
-    int start = 0;
-    for (int i = 0; i < line.size(); i++) {
-        if (line[i] = " " && i != 0) {
-            words += 1;
+    // Create ifstream to read lines from
+    ifstream in_stream;
+    string last_word;
+    // Iterate through each line in the file
+    while (getline(in_stream, line)) {
+        // Iterate in reverse through each character in the line until a space is found
+        for (int i = line.length(); i > 0; i--) {
+            // If a space is found in the line, make sure that it is not at the beginning or end of the line because it can't be counted as a word
+            if ((line.find(" ")) && (line.find(" ") < line.length()) && (line.find(" ") > 0)) {
+                // Take substring of line and assign it to the last_word string
+                last_word = line.substr(i, line.length() - i);
+            }
         }
+
     }
-    for (int i = 0; i < words; i++) {
-        if (line[i] = " " && i != 0) {
-            string word_list[i] = line.substr(start, i - start);
-            start = i + 1;
-            //word_list[i].append(line.substr(start, i - start));
-        }
-    }
-    // Return last word in string line
-    return word_list[words];
 }
