@@ -37,13 +37,13 @@ int main () {
     string file_name;
 
     // Get file name from user and open ifstream
-    cout << "Enter file name: ";
+    cout << "Enter filename: ";
     getline(cin, file_name);
     in_stream.open(file_name);
 
     // Open ofstream & print get file name line
     out_stream.open("stats2_results.txt");
-    out_stream << "Enter file name: " << file_name << endl;
+    out_stream << "Enter filename: " << file_name << endl;
 
     // If opening file fails
     if (!in_stream.is_open()) {
