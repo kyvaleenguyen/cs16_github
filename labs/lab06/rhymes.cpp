@@ -44,6 +44,9 @@ int main() {
     // output_stream << 
     
 
+    // Close in_stream & out_stream
+    in_stream.close();
+    out_stream.close();
     return 0;
 }
 
