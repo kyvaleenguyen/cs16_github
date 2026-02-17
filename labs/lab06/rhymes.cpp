@@ -28,7 +28,7 @@ int main() {
     in_stream >> 
 
     // Open ofstream & print get file name line
-    out_stream.open("results.txt");
+    out_stream.open("rhymes_results.txt");
     out_stream << "Enter file name: " << file_name << endl;
 
     // If opening file fails
@@ -65,6 +65,7 @@ string findLastWord(string line) {
         for (int i = line.length(); i > 0; i--) {
             // If a space is found in the line, make sure that it is not at the beginning or end of the line because it can't be counted as a word
             if ((line.find(" ")) && (line.find(" ") < line.length()) && (line.find(" ") > 0)) {
+                // Take substring of line and assign it to the last_word string
                 last_word = line.substr(i, line.length() - i);
             }
         }
