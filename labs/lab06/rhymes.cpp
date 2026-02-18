@@ -74,10 +74,11 @@ int main() {
     double rhymeDensity = (double)rhymesFound / lines;
 
     // Check if there are no rhymes & print appropriate statement if no rhymes found in out_stream
-    /*if (rhymesFound == 0) {
+    if (rhymesFound == 0) {
+        out_stream << endl;
         out_stream << "No rhymes found." << endl;
         out_stream << "There are " << lines << " lines in this poem.";
-    }*/
+    }
 
     // Print how many rhyming pairs there are
     if (rhymesFound == 1) {
