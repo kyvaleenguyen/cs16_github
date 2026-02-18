@@ -41,8 +41,11 @@ int main() {
     return 0;
 }
 
-// DEFINE FUNCTION HERE. 
-// Include Pre-Condition and Post-Condition comments.
+// Pre-condition: file being read from MUST have at least one int already in the file. After getting user input for target, the function searches for instances of that
+//      target appearing in the file reading integers
+
+// Post-condition: the function gets an integer input from the user that is stored as the target variable, which is used to return target values of that same int after
+//      the function finishes running
 vector<int> SeqSearchAll (int target, ifstream &ifs) {
     // Create int vector to store target indexes that are found
     vector<int> targetIndexes;
@@ -57,6 +60,9 @@ vector<int> SeqSearchAll (int target, ifstream &ifs) {
         if(next == target) {
             targetIndexes.push_back(index);
         }
+    }
+    if (targetIndexes.size() == 0) {
+        targetIndexes.push_back(-1);
     }
     return targetIndexes;
 }
