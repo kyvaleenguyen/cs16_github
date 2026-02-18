@@ -73,9 +73,9 @@ int main () {
     // Sort found data
     bubbleSort(newArray, total_ints);
     // Function calls to find average, median, & std_dev
-    cout << "Here are some statistics:\n\t";
+    cout << "Here are some statistics:" << endl;
     // # of values in array
-    cout << "N: " << total_ints << endl;
+    cout << "      N: " << total_ints << endl;
     // average
     double avg = findAverage(newArray, total_ints);
     cout << "Average: " << avg << endl;
