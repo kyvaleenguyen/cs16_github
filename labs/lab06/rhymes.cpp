@@ -18,16 +18,20 @@ int main() {
     // Create input stream object, then get a filename from user (check it too)
     ifstream in_stream;
     ofstream out_stream;
-    string file_name, line1, line2;
+    string file_name, currentLine, previousWord;
 
     // Get file name from user and open ifstream
     cout << "Enter filename: ";
     getline(cin, file_name);
     in_stream.open(file_name);
 
+    // Open out_stream & print get file name line
+    out_stream.open("rhymes_results.txt");
+    out_stream << "Enter filename: " << file_name << endl;
+
     // If opening file fails
     if (!in_stream.is_open()) {
-        cerr << "Cannot open " << file_name;
+        out_stream << "Cannot open " << file_name;
         exit(1);
     }
 
@@ -35,58 +39,55 @@ int main() {
     // Create count of rhymes found
     int rhymesFound = 0;
 
-    // Open out_stream & print get file name line
-    out_stream.open("rhymes_results.txt");
-    out_stream << "Enter filename: " << file_name << endl;
-
     // Create count of lines found in poem
     int lines = 0;
 
-    while((getline(in_stream, line1)) && (getline(in_stream, line2))) {
-        // Count lines in poem
-        lines += 2;
+    while (getline(in_stream, currentLine)) {
+        // Add one line to line count for each getline
+        lines++;
 
-        // Get last word from both lines
-        string word1 = findLastWord(line1);
-        string word2 = findLastWord(line2);
+        // Assign last word to current word during each getline iteration
+        string currentWord = findLastWord(currentLine);
+        cleanUp(currentWord);
 
-        // Clean last word from both lines (set all letters to lowercase & remove any non-letter characters in both strings)
-        cleanUp(word1);
-        cleanUp(word2);
-
-        // Check if both words rhyme
-        if (compareWords(word1, word2)) {
-            // Create count of rhymes found
-            rhymesFound++;
-
-            // Print rhyme found
-            out_stream << word1 << " and " << word2 << endl;
-        } else {
-            continue;
+        // Check if there was a previous line to check for rhyme in previous & current line
+        if ((lines > 1) && (!previousWord.empty()) && (!currentWord.empty())) {
+            // Check if both words rhyme
+            if (compareWords(previousWord, currentWord)) {
+                // Add to rhyme count if rhyme found
+                rhymesFound++;
+                // Print rhyme found
+                out_stream << previousWord << " and " << currentWord << endl;
+            }
         }
+        // Update previousWord for lines after in later iterations
+        previousWord = currentWord;
     }
+
+    // Close in_stream
+    in_stream.close();
 
     // Calculate rhyme density
     // Set double precision of rhyme density
     out_stream << fixed << showpoint;
     out_stream << setprecision(2);
-
     double rhymeDensity = (double)rhymesFound / lines;
-
-
-    // Close in_stream
-    in_stream.close();
 
     // Check if there are no rhymes & print appropriate statement if no rhymes found in out_stream
     if (rhymesFound == 0) {
         out_stream << "No rhymes found." << endl;
+        out_stream << "There are " << lines << " lines in this poem.";
+    }
+
+    // Print how many rhyming pairs there are
+    if (rhymesFound == 1) {
+        out_stream << "There is " << rhymesFound << " pairs of rhyming words." << endl;
+    } else if (rhymesFound > 1) {
+        out_stream << "There are " << rhymesFound << " pairs of rhyming words." << endl;
     }
 
     // Dont print rhymeDensity if no rhymes
     // Print rhymeDensity if rhyme(s) found
-    if (rhymesFound < 0) {
-        out_stream << "There are " << lines << " lines in this poem.";
-    }
     if (rhymesFound > 0) {
         out_stream << "There are " << lines << " lines in this poem";
         out_stream << ", so the rhyme-line density is: " << rhymeDensity;
