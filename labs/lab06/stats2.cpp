@@ -33,7 +33,6 @@ int arrayCount(const string& file_name) {
 int main () {
     // Input & output streams, file name string declaration
     ifstream in_stream;
-    ofstream out_stream;
     string file_name;
 
     // Get file name from user and open ifstream
@@ -66,33 +65,26 @@ int main () {
     }
     // Close input file
     in_stream.close();
-
-    // Open ofstream & print get file name line
-    out_stream.open("stats2_results.txt");
-    out_stream << "Enter filename: " << file_name << endl;
     
     // Set precision
-    out_stream << fixed << showpoint;
-    out_stream << setprecision(2);
+    cout << fixed << showpoint;
+    cout << setprecision(2);
 
     // Sort found data
     bubbleSort(newArray, total_ints);
     // Function calls to find average, median, & std_dev
-    out_stream << "Here are some statistics:" << endl;
+    cout << "Here are some statistics:" << endl;
     // # of values in array
-    out_stream << "\tN: " << total_ints << endl;
+    cout << "\tN: " << total_ints << endl;
     // average
     double avg = findAverage(newArray, total_ints);
-    out_stream << "Average: " << avg << endl;
+    cout << "Average: " << avg << endl;
     // median
     double median = findMedian(newArray, total_ints);
-    out_stream << " Median: " << median << endl;
+    cout << " Median: " << median << endl;
     // std_dev
     double std_dev = findStdDev(newArray, total_ints, avg);
-    out_stream << " StdDev: " << std_dev;
-    
-    // Close output file
-    out_stream.close();
+    cout << " StdDev: " << std_dev;
 
     // Delete dynamic array
     delete[] newArray;
