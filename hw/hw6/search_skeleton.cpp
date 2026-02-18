@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+
 using namespace std;
 
 // Note: ifstream and ofstream objects
@@ -14,6 +15,12 @@ int main() {
     cout << "Enter filename: ";
     cin >> fname;
     ifs.open(fname);
+
+    // If opening file fails
+    if (!ifs.is_open()) {
+        cerr << "Cannot open " << fname;
+        exit(1);
+    }
 
     int target;
     cout << "Enter target: ";
@@ -36,3 +43,20 @@ int main() {
 
 // DEFINE FUNCTION HERE. 
 // Include Pre-Condition and Post-Condition comments.
+vector<int> SeqSearchAll (int target, ifstream &ifs) {
+    // Create int vector to store target indexes that are found
+    vector<int> targetIndexes;
+
+    // Create int values to increment throughout file
+    int index = 0;
+    int next;
+
+    // While loop to increment
+    while (ifs >> next) {
+        index++;
+        if(next == target) {
+            targetIndexes.push_back(index);
+        }
+    }
+    return targetIndexes;
+}
