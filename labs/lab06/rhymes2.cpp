@@ -18,8 +18,7 @@ int main() {
     // Create input stream object, then get a filename from user (check it too)
     ifstream in_stream;
     ofstream out_stream;
-    string file_name, currentLine;
-    string previousWord = "";
+    string file_name, currentLine, previousWord;
 
     // Get file name from user and open ifstream
     cout << "Enter filename: ";
@@ -60,7 +59,7 @@ int main() {
                 // Add to rhyme count if rhyme found
                 rhymesFound++;
                 // Print rhyme found
-                cout << previousWord << " and " << currentWord << endl;
+                out_stream << previousWord << " and " << currentWord << endl;
             }
         }
         // Update previousWord for lines after in later iterations
@@ -72,27 +71,28 @@ int main() {
 
     // Calculate rhyme density
     // Set double precision of rhyme density
-    cout << fixed << showpoint;
-    cout << setprecision(2);
+    out_stream << fixed << showpoint;
+    out_stream << setprecision(2);
     double rhymeDensity = (double)rhymesFound / lines;
 
     // Check if there are no rhymes & print appropriate statement if no rhymes found in out_stream
     if (rhymesFound == 0) {
-        cout << "No rhymes found." << endl;
-        cout << "There are " << lines << " lines in this poem.";
-    } else {
-        // Print how many rhyming pairs there are
-        if (rhymesFound == 1) {
-            cout << "There is 1 pair of rhyming words." << endl;
-        } else {
-            cout << "There are " << rhymesFound << " pairs of rhyming words." << endl;
-        }
-        // Dont print rhymeDensity if no rhymes
-        // Print rhymeDensity if rhyme(s) found
-        if (rhymesFound > 0) {
-        cout << "There are " << lines << " lines in this poem";
-        cout << ", so the rhyme-line density is: " << rhymeDensity;
-        }
+        out_stream << "No rhymes found." << endl;
+        out_stream << "There are " << lines << " lines in this poem.";
+    }
+
+    // Print how many rhyming pairs there are
+    if (rhymesFound == 1) {
+        out_stream << "There is " << rhymesFound << " pair of rhyming words." << endl;
+    } else if (rhymesFound > 1) {
+        out_stream << "There are " << rhymesFound << " pairs of rhyming words." << endl;
+    }
+
+    // Dont print rhymeDensity if no rhymes
+    // Print rhymeDensity if rhyme(s) found
+    if (rhymesFound > 0) {
+        out_stream << "There are " << lines << " lines in this poem";
+        out_stream << ", so the rhyme-line density is: " << rhymeDensity;
     }
 
     // Close out_stream
