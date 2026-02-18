@@ -32,7 +32,7 @@ int main() {
 
     // If opening file fails
     if (!in_stream.is_open()) {
-        out_stream << "Cannot open " << file_name;
+        cout << "Cannot open " << file_name;
         exit(1);
     }
 
