@@ -1,1 +1,3 @@
-Enter file name: No.txt
+Enter filename: MyPoem.txt
+today and mckay
+There are 8 lines in this poem, so the rhyme-line density is: 0.12
