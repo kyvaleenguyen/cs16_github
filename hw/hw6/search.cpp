@@ -34,7 +34,7 @@ int main() {
     else {
         cout << "Target found at position(s): ";
         for (int i = 0; i < returned.size(); i++) {
-            cout << returned[i] << " ";
+            cout << returned[i] + 1 << " ";
         } // for
         cout << endl;
     } // else
