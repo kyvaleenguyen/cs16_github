@@ -17,7 +17,6 @@ bool compareWords(string word1, string word2);
 int main() {
     // Create input stream object, then get a filename from user (check it too)
     ifstream in_stream;
-    ofstream out_stream;
     string file_name, currentLine;
     string previousWord = "";
 
@@ -26,17 +25,11 @@ int main() {
     getline(cin, file_name);
     in_stream.open(file_name);
 
-    // Open out_stream & print get file name line
-    out_stream.open("rhymes_results.txt");
-        out_stream << "Enter filename: " << file_name << endl;
-
     // If opening file fails
     if (!in_stream.is_open()) {
         cout << "Cannot open " << file_name;
         exit(1);
     }
-
-    // Print Enter file name line in out_stream
 
     // Read the lines in your file and check on rhyming, per our definition
     // Create count of rhymes found
@@ -95,8 +88,6 @@ int main() {
         }
     }
 
-    // Close out_stream
-    out_stream.close();
     return 0;
 }
 
