@@ -44,6 +44,7 @@ bool isPalindrome(string s) {
         // Update position of first & last letter to continue checking inwards
         firstLetter++;
         lastLetter--;
+        // Reassign correct indexing to string s once ends of sentence have been verified to be equal to each other & continue checking inwards. RECURSION :D
         s = s.substr(firstLetter, lastLetter - firstLetter);
         // Recursive function call
         isPalindrome(s);
