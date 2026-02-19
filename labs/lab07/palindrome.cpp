@@ -14,13 +14,6 @@ int main() {
     // 2. Clean up the string using the required function
     cleanUp(sentence);
 
-    // Test case: test for int only inputs & if sentence is being properly cleaned
-    cout << sentence << endl;
-    
-    // 3. Check to see if string is a palindrome
-    isPalindrome(sentence);
-    cout << sentence[0] << " " << sentence[sentence.size()-1] << endl;
-
     // 4. Print out message accordingly (see examples given)
     // Print if it is or is not a palindrome
     if (isPalindrome(sentence) == true) {
