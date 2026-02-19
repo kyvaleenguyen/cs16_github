@@ -13,6 +13,9 @@ int main() {
 
     // 2. Clean up the string using the required function
     cleanUp(sentence);
+
+    // Test case: test for int only inputs & if sentence is being properly cleaned
+    cout << sentence << endl;
     
     // 3. Check to see if string is a palindrome
     isPalindrome(sentence);
@@ -31,16 +34,19 @@ int main() {
 // Function call: isPalindrome
 bool isPalindrome(string s) {
     // Create 2 ints to get first & last position when comparing letters from front to back going inwards
-    int firstLetter = s[0];
+    int firstLetter = 0;
     // REMEMBER: when getting the last character of the string, do string[string.size()-1] because indexing STARTS AT ZERO
-    int lastLetter = s[s.size()-1];
+    int lastLetter = s.size()-1;
+
+    // Base case
+    if (firstLetter == lastLetter) {
+        return true;
+    }
+
     // Check if the first & last letters match. If they do, continue inwards checking if the sentence is a palindrome
     if (s[firstLetter] == s[lastLetter]) {
         // Check if indexing has stopped by checking if first letter is same index as last letter.
         // If the recursive function is able to get to this point & go through the whole sentence, the word is a palindrome so return true. 
-        if (firstLetter == lastLetter) { // Base case
-            return true;
-        }
         // Update position of first & last letter to continue checking inwards
         firstLetter++;
         lastLetter--;
@@ -52,6 +58,7 @@ bool isPalindrome(string s) {
         // If the letters dont match, the sentence isnt a palindrome. Return false
         return false;
     }
+    return isPalindrome(s);
 }
 
 // Pre-condition: The string word must already exist and be defined as a string type variable upon function call
