@@ -15,7 +15,7 @@ int main() {
     cleanUp(sentence);
     
     // 3. Check to see if string is a palindrome
-    isPalindrome(sentence);\
+    isPalindrome(sentence);
 
     // 4. Print out message accordingly (see examples given)
     // Print if it is or is not a palindrome
