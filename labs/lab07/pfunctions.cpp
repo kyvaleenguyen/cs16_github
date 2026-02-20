@@ -7,30 +7,22 @@ using namespace std;
 
 // Function call: isPalindrome
 bool isPalindrome(string s) {
-    // Create 2 ints to get first & last position when comparing letters from front to back going inwards
-    int firstLetter = s[0];
-    // REMEMBER: when getting the last character of the string, do string[string.size()-1] because indexing STARTS AT ZERO
-    int lastLetter = s[s.size()-1];
+    // Base case
+    if (s.size() <= 1) {
+        return true;
+    }
+
     // Check if the first & last letters match. If they do, continue inwards checking if the sentence is a palindrome
-    if (s[firstLetter] == s[lastLetter]) {
-        // Check if indexing has stopped by checking if first letter is same index as last letter.
-        // If the recursive function is able to get to this point & go through the whole sentence, the word is a palindrome so return true. 
-        if (firstLetter == lastLetter) { // Base case
-            return true;
-        }
-        // Update position of first & last letter to continue checking inwards
-        firstLetter++;
-        lastLetter--;
+    if (s[0] == s[s.size()-1]) {
         // Reassign correct indexing to string s once ends of sentence have been verified to be equal to each other & continue checking inwards. RECURSION :D
-        s = s.substr(firstLetter, lastLetter - firstLetter);
+        string sub = s.substr(1, s.size()-2);
         // Recursive function call
-        isPalindrome(s);
+        return isPalindrome(sub);
     } else {
         // If the letters dont match, the sentence isnt a palindrome. Return false
         return false;
     }
 }
-
 
 // Pre-condition: The string word must already exist and be defined as a string type variable upon function call
 // Post-condition: Lowers capitalization for all words & removes non-letter characters within the string
