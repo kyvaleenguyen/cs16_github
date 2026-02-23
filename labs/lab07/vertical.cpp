@@ -14,6 +14,7 @@ int main() {
     // 2. Check input and pass it on to printV()
     //  Input MUST be positive (greater than 0). If input is less than 1, quit program
     if (intInput < 1) {
+        cout << "Input must be a positive integer.";
         exit(1);
     }
 
