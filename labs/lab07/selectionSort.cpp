@@ -35,7 +35,7 @@ int main() {
 
     // 4. Ask user for ascending or descending sort
     cout << "Asending (0) or Descending (1): ";
-    int input;
+    int input = 0;
     switch(input) {
         case '0': 
             // sort ascending
