@@ -16,20 +16,15 @@ int main() {
     cout << "Enter filename: ";
     cin >> fname;
 
-    // Check if file cant be opened
-    ifs.open(fname);
-
-    // If opening file fails
-    if (!ifs.is_open()) {
-        cerr << "Cannot open " << fname;
-        exit(1);
-    }
-
     // 2. Get size of file to then create dynamic array
     //      Note: You HAVE to use the functions:
     //      getFileSize() and getArray() here
     int size = getFileSize(ifs, fname);
+
+    // Create dynamic array to store values read from input file through ifstream
     int* arr = new int[size]; 
+
+    // Get array from input file
     getArray(ifs, fname, arr, size);
 
     // 3. Print original array
@@ -47,10 +42,10 @@ int main() {
     // Create boolean variable to store value for ascending or descending sorting
     bool desc;
     if (input == 1) {
-        // sort ascending
+        // sort descending
         desc = false;
     } else if (input == 0) {
-        // sort descending
+        // sort ascending
         desc = true;
     } else { 
         // If user does not enter valid input (0 or 1 only) when asked for sorting ascending or descending
