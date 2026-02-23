@@ -1,5 +1,7 @@
-// Include statements go here...
 #include <fstream>
+#include <iostream>
+#include <string>
+#include <iomanip> //required for set precision
 
 using namespace std;
 
@@ -14,66 +16,142 @@ bool compareWords(string word1, string word2);
 
 int main() {
     // Create input stream object, then get a filename from user (check it too)
-    ifstream input_stream;
-    ofstream output_stream;
-    string file_name;
+    ifstream in_stream;
+    string file_name, currentLine;
+    string previousWord = "";
 
-    // Get file name from user and open file
-    input_stream << getline(cin, file_name);
-    input_stream.open(file_name);
+    // Get file name from user and open ifstream
+    cout << "Enter filename: ";
+    getline(cin, file_name);
+    in_stream.open(file_name);
 
     // If opening file fails
-    if (in.fail()) {
-        cerr << "Input file opening failed." << endl; 
-        exit(1); 
+    if (!in_stream.is_open()) {
+        cout << "Cannot open " << file_name;
+        exit(1);
     }
 
     // Read the lines in your file and check on rhyming, per our definition
-    input_stream << 
+    // Create count of rhymes found
+    int rhymesFound = 0;
 
-    // Finally, print the results (see lab descriptions for examples)
-    // output_stream << 
-    
+    // Create count of lines found in poem
+    int lines = 0;
+
+    while (getline(in_stream, currentLine)) {
+        // Add one line to line count for each getline
+        lines++;
+
+        // Assign last word to current word during each getline iteration
+        string currentWord = findLastWord(currentLine);
+        cleanUp(currentWord);
+
+        // Check if there was a previous line to check for rhyme in previous & current line
+        if ((lines > 1) && (!previousWord.empty()) && (!currentWord.empty())) {
+            // Check if both words rhyme
+            if (compareWords(previousWord, currentWord)) {
+                // Add to rhyme count if rhyme found
+                rhymesFound++;
+                // Print rhyme found
+                cout << previousWord << " and " << currentWord << endl;
+            }
+        }
+        // Update previousWord for lines after in later iterations
+        previousWord = currentWord;
+    }
+
+    // Close in_stream
+    in_stream.close();
+
+    // Calculate rhyme density
+    // Set double precision of rhyme density
+    cout << fixed << showpoint;
+    cout << setprecision(2);
+    double rhymeDensity = (double)rhymesFound / lines;
+
+    // Check if there are no rhymes & print appropriate statement if no rhymes found in out_stream
+    if (rhymesFound == 0) {
+        cout << "No rhymes found." << endl;
+        cout << "There are " << lines << " lines in this poem.";
+    } else {
+        // Print how many rhyming pairs there are
+        if (rhymesFound == 1) {
+            cout << "There is 1 pair of rhyming words." << endl;
+        } else {
+            cout << "There are " << rhymesFound << " pairs of rhyming words." << endl;
+        }
+        // Dont print rhymeDensity if no rhymes
+        // Print rhymeDensity if rhyme(s) found
+        if (rhymesFound > 0) {
+        cout << "There are " << lines << " lines in this poem";
+        cout << ", so the rhyme-line density is: " << rhymeDensity;
+        }
+    }
 
     return 0;
 }
 
-// MISSING FUNCTION DEFINITIONS HERE
-// Make sure you have Pre-Conditions and Post-Conditions defined for each function you define here!
-
-// Pre-condition: String line must already be defined in file being opened. Function finds last word in string. 
-// There MUST already be AT LEAST one word in the string. 
+// Pre-condition: String line must already exist for function to work. Function finds last word in string. 
 // Post-condition: The function returns the last word found in the string. If there are no spaces, the whole string is returned
-//      Note: the string MUST be a string (no numbers??)
-string findLastWord(string line){
-    int words = 1;
-    int start = 0;
-    for (int i = 0; i < line.size()) {
-        if (line[i] == " " && i != 0) {
-            words += 1;
-        }
+//      Note: the string MUST be a variable of string type already defined
+string findLastWord(string line) {
+    // Last word string
+    string last_word;
+
+    // Check if line is empty
+    if (line.empty()) {
+        return "";
     }
-    string word_list[words] = {};
-    for (int i = 0; i < words; i++) {
-        if ((line[i] == " ") && (i != 0)) {
-            word_list[i] = line.substr(start, i - start);
-        }
+
+    // Find position of last space in line
+    int lastSpace = line.rfind(" ");
+
+    // Check if there is a last space. If not, the whole line is the word
+    if (lastSpace == string::npos) {
+        return line;
     }
-    // Return last word in string line
-    return word_list[words];
+    
+    // Get substr of last word
+    string lastWord = line.substr(lastSpace + 1);
+    return lastWord;
 }
 
 
-// Pre-condition: 
-// Post-condition: 
+// Pre-condition: The string word must already exist and be defined as a string type variable upon function call
+// Post-condition: Lowers capitalization for all words & removes non-letter characters within the string
 void cleanUp(string &word) {
+    // Create string variable to store cleaned string
+    string cleanString = "";
 
+    // Remove non-letter characters & lower letter characters in string
+    for (char c : word) {
+        // Check if character is a letter
+        if(isalpha(c)) {
+            cleanString += tolower(c);
+        }
+    }
+    // Assign cleaned string to word reference
+    word = cleanString;
 }
 
 
-// Pre-condition: 
-// Post-condition: 
+// Pre-condition: There must ONLY be 2 words that are compared with each other. They must BOTH be strings
+// Post-condition: Compares both words & checks if they rhyme (must have 2 consecutive letters that are the same in both words at the end of the word)
 bool compareWords(string word1, string word2) {
-
+    // Check if both words have greater than 2 letters
+    int length1 = word1.length();
+    int length2 = word2.length();
+    if ((length1 < 2) || (length2 < 2)) {
+        return false;
+    }
+    // Check last 2 letters of both strings being compared
+    string comparison1;
+    string comparison2;
+    comparison1 = word1.substr(word1.length() - 2);
+    comparison2 = word2.substr(word2.length() - 2);
+    if (comparison1 == comparison2) {
+        return true;
+    } else {
+        return false;
+    }
 }
-
