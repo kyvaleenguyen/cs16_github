@@ -9,8 +9,6 @@ using namespace std;
 
 // DEFINE ALL 5 FUNCTIONS PER THE sheaders.h FILE HERE
 // Add Pre- and Post-Condition comments
-<<<<<<< HEAD
-=======
 void swap_values(int& v1, int& v2) {
     int temp = 0;
     temp = v1;
@@ -44,7 +42,7 @@ int find_index_of_swap(bool desc, int a[], int start_index, int number_used) {
 }
 
 // Pre-condition: MUST call swap & find_index_of_swap inside this function. MUST be a recursive function
-// Post-condition: 
+// Post-condition: Sorts values in array according to current iteration of array ran through selectionSort
 void sort(bool desc, int a[], int number_used, int index) {
     // Base case: nothing left to sort
     if (index >= number_used - 1) {
@@ -105,5 +103,6 @@ void getArray(ifstream& in, string fname, int arr[], int size) {
             arr[i] = next;
         }
     }
+    // Close input file once done reading
+    fname.close();
 }
->>>>>>> 44222289d35e50785869ecca9b221d858ce751a6

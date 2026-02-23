@@ -1,38 +1,14 @@
-<<<<<<< HEAD
-/* Main function for selectionSort.cpp
- * For use in CS 16
- * (c) 2024 by Z.Matni
- */
-=======
->>>>>>> 44222289d35e50785869ecca9b221d858ce751a6
 #include <iostream> // for cout, cin, endl
 #include <fstream>  // for ifstream
 #include <string>   // for string
 #include <cstdlib>  // for exit
-<<<<<<< HEAD
-using namespace std;
-=======
 
 using namespace std;
 
->>>>>>> 44222289d35e50785869ecca9b221d858ce751a6
 #include "sheaders.h"
 
 int main() {
     // 1. Get filename from user and check it
-<<<<<<< HEAD
-    // 2. Get size of file to then create dynamic array
-    //      Note: You HAVE to use the functions:
-    //      getFileSize() and getArray() here
-    // 3. Print original array (see PDF lab description for details)
-    // 4. Ask user for ascending or descending sort
-    // 5. Run selection sort on the array
-    //      Note: You HAVE to use the function sort() here
-    // 6. Print sorted array (see PDF lab description for details)
-
-    return 0;
-}
-=======
     // Create ifstream to read from file & string variable for filename
     ifstream ifs;
     string fname;
@@ -52,33 +28,49 @@ int main() {
     // 2. Get size of file to then create dynamic array
     //      Note: You HAVE to use the functions:
     //      getFileSize() and getArray() here
+    int size = getFileSize(ifs, fname);
+    int* arr = new int[size]; 
+    getArray(ifs, fname, arr, size);
 
-
-    // 3. Print original array (see PDF lab description for details)
-
+    // 3. Print original array
+    cout << "Original array:" << endl;
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
 
     // 4. Ask user for ascending or descending sort
     cout << "Asending (0) or Descending (1): ";
     int input = 0;
-    switch(input) {
-        case '0': 
-            // sort ascending
-            break;
-        case '1': 
-            // sort descending
-            break;
-        default: 
-            cout << "Invalid input. Must be (0) or (1)";
-            exit (1);
+    cin >> input;
+
+    // Create boolean variable to store value for ascending or descending sorting
+    bool desc;
+    if (input == 1) {
+        // sort ascending
+        desc = false;
+    } else if (input == 0) {
+        // sort descending
+        desc = true;
+    } else { 
+        // If user does not enter valid input (0 or 1 only) when asked for sorting ascending or descending
+        cout << "Invalid input. Must be (0) or (1)" << endl;
+
+        // Delete dynamic array to store memory
+        delete[] arr;
+        exit(1);
     }
 
     // 5. Run selection sort on the array
     //      Note: You HAVE to use the function sort() here
-
+    // Start at 0 for first run of sort & increment according to user input (ascending or descending)
+    sort(desc, arr, size, 0);
 
     // 6. Print sorted array (see PDF lab description for details)
-
+    cout << "Sorted array:" << endl;
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
 
     return 0;
 }
->>>>>>> 44222289d35e50785869ecca9b221d858ce751a6
