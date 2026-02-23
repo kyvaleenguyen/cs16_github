@@ -12,9 +12,8 @@ int main() {
     cin >> intInput;
 
     // 2. Check input and pass it on to printV()
-    //  Input MUST be positive (greater than 0). If input is less than 1, print error message & quit program
+    //  Input MUST be positive (greater than 0). If input is less than 1, quit program
     if (intInput < 1) {
-        cerr << "Input must be a positive integer.";
         exit(1);
     }
 
