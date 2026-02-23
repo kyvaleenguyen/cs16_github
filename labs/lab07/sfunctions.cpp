@@ -66,7 +66,7 @@ int getFileSize(ifstream& inf, string fname) {
     inf.open(fname);
     // If file cant be opened print error & exit program
     if (!inf.is_open()) {
-        cerr << "Cannot open" << fname;
+        cerr << "Cannot open " << fname;
         exit(1);
     }
     // Iterate through ints within file
@@ -77,7 +77,7 @@ int getFileSize(ifstream& inf, string fname) {
         count++;
     }
     // Close input file once done reading
-    fname.close();
+    inf.close();
 
     // Return number of values read from the input value (int values)
     return count;
@@ -95,14 +95,13 @@ void getArray(ifstream& in, string fname, int arr[], int size) {
     // Create dynamic array to be populated
     //  This gets the original array from the file
     int next;
+    int i = 0;
 
-    // Create dynamic array using new()
-    int* newArray = new int[size];
-    while (in >> next) {
-        for (int i = 0; i < size; i++) {
-            arr[i] = next;
-        }
+    // Get values from input file into array (declared as dynamic array already in selectionSort file (main file) )
+    while ((in >> next) && (i < size)) {
+        arr[i] = next;
+        i++;
     }
     // Close input file once done reading
-    fname.close();
+    in.close();
 }
