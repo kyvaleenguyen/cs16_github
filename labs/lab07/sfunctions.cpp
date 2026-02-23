@@ -9,6 +9,8 @@ using namespace std;
 
 // DEFINE ALL 5 FUNCTIONS PER THE sheaders.h FILE HERE
 // Add Pre- and Post-Condition comments
+<<<<<<< HEAD
+=======
 void swap_values(int& v1, int& v2) {
     int temp = 0;
     temp = v1;
@@ -104,3 +106,4 @@ void getArray(ifstream& in, string fname, int arr[], int size) {
         }
     }
 }
+>>>>>>> 44222289d35e50785869ecca9b221d858ce751a6

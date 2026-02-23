@@ -1,10 +1,30 @@
+<<<<<<< HEAD
+// File: pfunctions.cpp
+#include <iostream>
+#include <string> 
+=======
 #include <iostream>
 #include <string>
 
+>>>>>>> 44222289d35e50785869ecca9b221d858ce751a6
 using namespace std;
 
 #include "pheaders.h"
 
+<<<<<<< HEAD
+// DEFINE THE 2 FUNCTIONS PER THE pheaders.h FILE HERE
+// Add Pre- and Post-Condition comments
+
+bool isPalindrome(string s) {
+    // This MUST be written as a RECURSIVE FUNCTION! (or you get no lab credit)
+
+    return(true); // This is a STUB - remove it once the function is completed.
+}
+
+void cleanUp(string &s) { 
+    cout << s << endl; // This is a TRACE - remove it once the function is completed. 
+}
+=======
 // Pre-condition: the string being passed into isPalindrome MUST be defined as a string type variable & be cleaned by the cleanUp function before being passed
 // Post-condition: the function iterates through the cleaned string by comparing the 1st & last characters within the string to see if they are equal to each other
 //      (all characters within the string are alphabetical letters because cleanUp was called on string before isPalindrome was called)
@@ -44,3 +64,4 @@ void cleanUp(string &s) {
     // Assign cleaned string to word reference
     s = cleanString;
 }
+>>>>>>> 44222289d35e50785869ecca9b221d858ce751a6
