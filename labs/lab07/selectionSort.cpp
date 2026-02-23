@@ -43,10 +43,10 @@ int main() {
     bool desc;
     if (input == 1) {
         // sort descending
-        desc = false;
+        desc = true;
     } else if (input == 0) {
         // sort ascending
-        desc = true;
+        desc = false;
     } else { 
         // If user does not enter valid input (0 or 1 only) when asked for sorting ascending or descending
         cout << "Invalid input. Must be (0) or (1)" << endl;
