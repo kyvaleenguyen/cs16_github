@@ -7,18 +7,31 @@ ALL = vertical.exe palindrome.exe selectionSort.exe
 
 all: $(ALL)
 
-# Vertical: Single file build
+# Vertical
 vertical.exe: vertical.cpp
 	$(CXX) $(CXXFLAGS) /Fe:vertical.exe vertical.cpp
 
-# Palindrome: Linking palindrome.cpp & pfunctions.cpp
-palindrome.exe: palindrome.cpp pfunctions.cpp pheaders.h
-	$(CXX) $(CXXFLAGS) /Fe:palindrome.exe palindrome.cpp pfunctions.cpp
+# Palindrome: depends on headers & separate objects
+palindrome.exe: palindrome.obj pfunctions.obj
+	$(CXX) $(CXXFLAGS) /Fe:palindrome.exe palindrome.obj pfunctions.obj
 
-# selectionSort: Linking selectionSort.cpp & sfunctions.cpp
-selectionSort.exe: selectionSort.cpp sfunctions.cpp sheaders.h
-	$(CXX) $(CXXFLAGS) /Fe:selectionSort.exe selectionSort.cpp sfunctions.cpp
+# selectionSort: depends on headers & separate objects
+selectionSort.exe: selectionSort.obj sfunctions.obj
+	$(CXX) $(CXXFLAGS) /Fe:selectionSort.exe selectionSort.obj sfunctions.obj
 
-# Clean up build files
+# Compilation for individual files (flags if .cpp or .h changes)
+palindrome.obj: palindrome.cpp pheaders.h
+	$(CXX) $(CXXFLAGS) /c palindrome.cpp
+
+pfunctions.obj: pfunctions.cpp pheaders.h
+	$(CXX) $(CXXFLAGS) /c pfunctions.cpp
+
+selectionSort.obj: selectionSort.cpp sheaders.h
+	$(CXX) $(CXXFLAGS) /c selectionSort.cpp
+
+sfunctions.obj: sfunctions.cpp sheaders.h
+	$(CXX) $(CXXFLAGS) /c sfunctions.cpp
+
+# Clean build files
 clean:
-	del *.exe *.obj *.pdb *.ilk
+	del /Q *.exe *.obj *.pdb *.ilk
