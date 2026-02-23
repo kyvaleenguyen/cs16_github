@@ -35,7 +35,7 @@ int main() {
     cout << endl;
 
     // 4. Ask user for ascending or descending sort
-    cout << "Asending (0) or Descending (1): ";
+    cout << "Ascending (0) or Descending (1): ";
     int input = 0;
     cin >> input;
 
