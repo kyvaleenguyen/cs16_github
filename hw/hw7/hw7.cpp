@@ -11,7 +11,7 @@ int sumOdds(int N);
 int main () {
     // #4
     int a = 8;
-    sumOdds(a);
+    cout << sumOdds(a) << endl;
 }
 
 // #4 function definition: Write a function definition of a recursive function that finds the sum of all odd integers in the first int N numbers
