@@ -34,7 +34,7 @@ int main() {
     // Use . to specify a member variable in a structure
     accountX.full_name = "Joanne Doe";
     accountX.balance = 1000.50;
-    accountX.interest_rate = 5.1;
+    accountX.interestRate = 5.1;
     accountX.term = 12;
 
     // Set all member variables in accountX to be stored in corresponding values in accountY
@@ -43,5 +43,17 @@ int main() {
     // Date declaration AND initialization
     Date due_date = {4, 26, 2026}, 
         birthday = {2, 10, 2007};
+
+    // Structure printing
+    cout << "accountX is under: " << accountX.full_name
+        << ". She has " << accountX.balance
+        << " saved. "
+        << "After " << accountX.term << " months she will have "
+        << accountX.balance * (1 + accountX.interestRate/100) << " saved." << endl;
+    cout << endl;
+
+    // Structure in structures & more printing
+
+    
     return 0;
 }
