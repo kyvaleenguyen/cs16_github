@@ -2,6 +2,10 @@
 // YOUR NAME HERE
 // Kyvalee Khloy Nguyen
 
+#include <string>
+
+using namespace std;
+
 // DECLARE THE struct UndergradStudents HERE:
 struct UndergradStudents {
     int studentIDnumber;

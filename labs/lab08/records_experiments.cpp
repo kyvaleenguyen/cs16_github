@@ -5,9 +5,22 @@
 
 using namespace std;
 
+// DECLARE THE struct UndergradStudents HERE:
+struct UndergradStudents {
+    int studentIDnumber;
+    string firstName;
+    string lastName;
+    string major;
+    float GPA;
+};
+
 // Bubblesort function declaration
 void bubbleSort(char *array, int size);
 void bubbleSort2(string *array, int size);
+
+// Name sort function definition
+void NameSort(UndergradStudents array[], int size);
+
 
 int main () {
     char letter = 97;
@@ -38,6 +51,46 @@ int main () {
     for (int i = 0; i < lettersSize; i++) {
         cout << tolower(letters[i]) << " ";
     }
+    cout << endl;
+
+    UndergradStudents KN, PG, KC;
+    KN.studentIDnumber = 4595;
+    KN.firstName = "Kyvalee";
+    KN.lastName = "Nguyen";
+    KN.major = "EE";
+    KN.GPA = 3.75;
+
+    PG.studentIDnumber = 4595;
+    PG.firstName = "Peter";
+    PG.lastName = "Gutierrez";
+    PG.major = "GEOG SOC";
+    PG.GPA = 3.75;
+
+    KC.studentIDnumber = 4596;
+    KC.firstName = "Kayla";
+    KC.lastName = "Chan";
+    KC.major = "UNDECLARED";
+    KC.GPA = 3.85;
+
+    cout << "Undergrad student 1's first name is: " << KN.firstName << endl;
+    cout << endl;
+
+  // 1. Put your individual students into an array
+  UndergradStudents students[3] = {KN, PG, KC};
+  int nameSize = 3;
+
+  // 2. Pass the ARRAY variable to the function
+  NameSort(students, nameSize);
+
+  // 3. Print from the array using the dot operator
+  cout << "Sorted Students by Last Name:" << endl;
+  for (int i = 0; i < nameSize; i++) {
+      cout << students[i].lastName << ", " << students[i].firstName << endl;
+  }
+
+  int num = 01;
+  cout << num << endl;
+  cout << num + 1 << endl;
 
     return 0;
 }
@@ -84,6 +137,19 @@ void bubbleSort2(string *array, int size) {
             array[i + 1] = temp;
             swapped = true;
         }
+    }
+  }
+}
+
+// Name sort function definition
+void NameSort(UndergradStudents array[], int size) {
+  for (int i = 0; i < size; i++) {
+    for (int j = 0; j < size - i - 1; j++) {
+      if (array[j].lastName > array[j + 1].lastName) {
+        UndergradStudents temp = array[j];
+        array[j] = array[j + 1];
+        array[j + 1] = temp;
+      }
     }
   }
 }
