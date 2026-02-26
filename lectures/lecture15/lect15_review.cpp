@@ -41,8 +41,8 @@ int main() {
     accountY = accountX;
 
     // Date declaration AND initialization
-    Date due_date = {4, 26, 2026}, 
-        birthday = {2, 10, 2007};
+    Date babey_bday = {4, 26, 2026}, 
+        bday = {2, 10, 2007};
 
     // Structure printing
     cout << "accountX is under: " << accountX.full_name
@@ -53,7 +53,10 @@ int main() {
     cout << endl;
 
     // Structure in structures & more printing
-
+    cout << babey_bday.month << endl;
+    cout << babey_bday.day << endl;
+    cout << babey_bday.year << endl;
+    cout << endl;
     
     return 0;
 }
