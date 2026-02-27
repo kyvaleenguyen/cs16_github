@@ -6,6 +6,9 @@
 
 using namespace std;
 
+// Bubble sort declaration (for strings)
+void bubbleSort(string *array, int size);
+
 // Structure data type
 //      Note: structures can be declared AND initiaized at the same time
 //      Note: we declare a structure outside of main to make its scope global
@@ -26,6 +29,13 @@ struct Date {
     int day;
     int year;
 };
+
+// Node struct
+struct linkNode {
+    string item;
+    int value;
+    linkNode *link;
+}
 
 int main() {
     // Another variable of type CDAccount
@@ -57,6 +67,39 @@ int main() {
     cout << babey_bday.day << endl;
     cout << babey_bday.year << endl;
     cout << endl;
+
+    // Node variables
+    linkNode x, y, z;
+    
+    x.item = "apple";
+
+    y.item = "banana";
+
+    z.item = "grape";
+
     
     return 0;
+}
+
+// Helper function: bubble sort (adapted)
+//      Note: for sorting last names in alphabetical order
+// Helper function: bubble sort (adapted)
+//      Note: for sorting last names in alphabetical order
+void bubbleSort(string *array, int size) {
+  bool swapped = true;
+  int j = 0;
+  string temp;
+
+  while (swapped) {
+    swapped = false;
+    j++;
+    for (int i = 0; i < size - j; i++) {
+      if (tolower(array[i][0]) > tolower(array[i + 1][0])) {
+          temp = array[i];
+          array[i] = array[i + 1];
+          array[i + 1] = temp;
+          swapped = true;
+      }
+    }
+  }
 }
