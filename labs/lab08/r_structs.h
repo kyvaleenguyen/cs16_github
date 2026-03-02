@@ -12,5 +12,5 @@ struct UndergradStudents {
     string firstName;
     string lastName;
     string major;
-    float GPA;
+    double GPA;
 };

@@ -4,6 +4,10 @@
 #include <cctype>
 #include <iomanip> //required for set precision
 
+#include "r_functions.cpp"
+#include "r_structs.h"
+#include "r_headers.h"
+
 using namespace std;
 
 // DECLARE THE struct UndergradStudents HERE:
@@ -25,8 +29,11 @@ void NameSort(UndergradStudents array[], int size);
 // Intiailize structures function definition
 void InitializeStructures(UndergradStudents us[], int &size);
 
+// WriteResults (cout, no ofstream version) function declaration
+void WriteResults(UndergradStudents us[], int size);
+
 int main () {
-    // Set precision
+  // Set precision
   cout << fixed << showpoint;
   cout << setprecision(2);
   
@@ -95,6 +102,7 @@ int main () {
   for (int i = 0; i < studentsSize; i++) {
       cout << students[i].lastName << ", " << students[i].firstName << endl;
   }
+  cout << endl;
 
   // Intialize structures test
   UndergradStudents undergrads[20];
@@ -127,6 +135,10 @@ int main () {
   }
   double avGPA = totalGPA / 4;
   cout << "Average GPA is: " << avGPA << endl;
+  cout << endl;
+
+  // WriteResults function call
+  WriteResults(undergrads, undergradsSize);
   cout << endl;
 
   return 0;
@@ -249,11 +261,25 @@ void InitializeStructures(UndergradStudents us[], int &size) {
       totalGPA += gpaTotal[i];
     }
     double avGPA = totalGPA / 4;
-    
-    // Newline syntax
-    cout << endl;
+      // Add to GPA variable in struct
+    us[i].GPA = avGPA;
 
     // Add to student counter to keep track of students within database
     student++;
+
+    // Newline syntax
+    cout << endl;
+  }
+}
+
+// WriteResults function definition (cout, no ofstream version)
+void WriteResults(UndergradStudents us[], int size) {
+  // Call NameSort
+  NameSort(us, size);
+
+  // Print output appropriately
+  cout << "These are the results sorted by last name:" << endl;
+  for (int i = 1; i <= size; i++) {
+    cout << "ID# " << i << ": " << us[i].lastName << ": " << us[i].firstName << ": " << us[i].major << ": " << us[i].GPA << endl;
   }
 }

@@ -9,9 +9,9 @@
 #include <iomanip>
 using namespace std;
 
-#include "structs.h"        // Needs completion
-#include "headers.h"        // Do not change
-#include "functions.cpp"    // Needs completion
+#include "r_structs.h"        // Needs completion
+#include "r_headers.h"        // Do not change
+#include "r_functions.cpp"    // Needs completion
 
 int main() {
     UndergradStudents ObjArray[20];
