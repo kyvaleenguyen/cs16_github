@@ -5,6 +5,15 @@
 #include <string>
 using namespace std;
 
+// Function to insert nodes
+struct Node {
+    int num;
+    Node* next;
+};
+
+// Define type of NodePtr as Node* for easier calling & use later
+type def Node* NodePtr;
+
 struct LinkNode {
     string item;
     int value;
