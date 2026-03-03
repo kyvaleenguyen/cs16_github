@@ -11,9 +11,12 @@
 using namespace std;
 
 // Define the functions, per the list in r_headers.
+
 void NameSort(UndergradStudents array[], int size) {
+  // Create for loop within a for loop to access lastName variables within the UndergradStudents struct
   for (int i = 0; i < size; i++) {
     for (int j = 0; j < size - i - 1; j++) {
+      // If first letter of last name precedes the last name before, swap the two's positions in the array
       if (array[j].lastName > array[j + 1].lastName) {
         UndergradStudents temp = array[j];
         array[j] = array[j + 1];
@@ -114,16 +117,13 @@ void WriteResults(ofstream &outf, UndergradStudents us[], int size) {
 
   // Open output file, aka "results.txt" for printing output in ofstream
   outf.open(OUTPUTFILE);
+
   // Print output appropriately
   outf << "These are the results sorted by last name:" << endl;
   for (int i = 0; i < size; i++) {
-    outf << "ID# " << us[i].studentIDnumber << ": " << us[i].lastName << ": " << us[i].firstName << ": " << us[i].major << ": " << us[i].GPA;
-    // Print newline if not last entry printed
-    if (i < size - 1) {
-      outf << endl;
-    }
+    outf << "ID# " << us[i].studentIDnumber << ": " << us[i].lastName << ": " << us[i].firstName << ": " << us[i].major << ": " << fixed << showpoint << setprecision(2) << us[i].GPA << endl;
   }
-
+  
   // Close output file once done
   outf.close();
 

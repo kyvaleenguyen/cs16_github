@@ -72,11 +72,12 @@ void printLL(LinkNodePtr h) {
     LinkNodePtr temp = h;
     int count = 0;
     while (temp != nullptr) {
-        cout << "Node " << count << ": ";
+        cout << "Node #" << count << ": ";
         cout << temp->name << ", " << temp->number << endl;
         temp = temp->link;
         count++;
     }
+    cout << "--------" << endl;
 }
 
 void insertNodeAfter(LinkNodePtr& h) {
@@ -114,7 +115,7 @@ void insertNodeAfter(LinkNodePtr& h) {
         // If user does enter negative int, enter new node at index entered by user
         //      Note: check if this index is out of bounds first
         // Check if index is "illegal" (out of bounds)
-        if (userInput > count || userInput == 0) {
+        if (userInput >= count) {
             cout << "Position entered is illegal. Nothing inserted." << endl;
             return;
         }
@@ -124,20 +125,16 @@ void insertNodeAfter(LinkNodePtr& h) {
     current = h;
     
     // For loop to iterate through list
-    for (int i = 1; i < userInput; i++) {
+    for (int i = 0; i < userInput; i++) {
         current = current->link;
     }
 
     // Insert new node
     LinkNodePtr new_node = new LinkNode;
 
-    // Get name string input from user
-    cout << "Enter name: ";
-    cin >> new_node->name;
-
-    // Get int number input from user
-    cout << "Enter number: ";
-    cin >> new_node->number;
+    // Get name string input from user & number input
+    cout << "Enter data (name, then number): ";
+    cin >> new_node->name >> new_node->number;
 
     // Link new node & insert in list at index user inputted earlier
     new_node->link = current->link;
