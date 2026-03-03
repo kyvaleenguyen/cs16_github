@@ -12,7 +12,7 @@ struct Node {
 };
 
 // Define type of NodePtr as Node* for easier calling & use later
-type def Node* NodePtr;
+typedef Node* NodePtr;
 
 struct LinkNode {
     string item;
