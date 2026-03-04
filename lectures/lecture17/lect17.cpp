@@ -3,7 +3,6 @@
 #include <iomanip>
 
 using namespace std;
-
 class DayOfYear {
     public: 
         DayOfYear();    // Constructor
@@ -27,24 +26,40 @@ class DayOfYear {
 int main () {
     // Create 2 objects of DayOfYear
     DayOfYear today, birthday (12, 2);
+
+    // 
+
     return 0;
 }
 
+// Constructor definition(s)
+//      Note: constructors dont have types & dont return anything
+// Default constructor definition: 
 DayOfYear::DayOfYear(): day(1), month(1) {}
-DayOfYear::DayOfYear(int m, int d): month(m), day(d) {check_date()}
 
-// Accessor ("getter") functoin to obtain values of member variables
+// Non-default constructor definition (w/ parameters/arguments): 
+DayOfYear::DayOfYear(int m, int d): day(d), month(m) {
+    if ((d < 1) || (d > 31) || (m < 1) || (m > 12)) {
+        cerr << "Bade date given." << endl;
+        exit(1);
+    } else {
+        day = d;
+        month = m;
+    }
+}
+
+// Accessor ("getter") function to obtain values of member variables
 void DayOfYear::output() {
     cout << "Month is: " << month << ", day is: " << day << endl;
 }
 
 void DayOfYear::set_month(int new_month) {
-    month = new_month;
+    int month = new_month;
     check_date();
 }
 
 void DayOfYear::set_month(int new_day) {
-    day = new_day;
+    int day = new_day;
     check_date();
 }
 
@@ -60,3 +75,27 @@ void DayOfYear::check_date() {
 
 // Mutator ("setter") functions allow member variable values to be changed
 //      Note: set() in class DayOfYear
+
+// Constructors can invoke another constructor in their initialization
+// Below is an example of a default constructor that calls a second constructor
+coordinate::coordinate(int a, int b): x(a), y(b) {}
+coordinte:coordinate(): coordinate(99,99) {}
+
+// Constructor declaration examples inside class person that has private variables name & age (that are string & int type respectively)
+person();
+person(string name, int age);
+
+// Data types in which programmers using it do not have access to the details of how values operate & are implemented are called abstract data types (ADT)
+//      Note: abstract to programmer
+//      Note: ADTs are concepts, classes are code implementations. Separate the specification of hyow the data type is used by a programmer from the details of how the type is implemented
+
+// Classes to produce ADTs
+class string {
+    public: 
+
+}
+
+// To preserve the interface of an ADT so that programs using it dont need to be changed: 
+//      Public member declarations cant be changed
+//      Public member definitions can be changed
+//      Private member functions can be added, deleted, or changed
