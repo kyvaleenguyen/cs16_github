@@ -36,8 +36,11 @@ void countLetters(int alphabet[26]) {
 //
 // Get two lines of string put from user (use getline(cin, s))
 void getAString(string input) {
+    // First string input to be compared
     cout << "Enter string value: ";
     getline(cin, input);
+    
+    // Second string input to be compared
 
 }
 
