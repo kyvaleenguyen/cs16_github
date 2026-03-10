@@ -6,11 +6,14 @@ using namespace std;
 class DayOfYear {
     public: 
         DayOfYear();    // Constructor
+        DayOfYear(int m, int d); // Non-default constructor
         void input();   // Member func
         void output();  // Member func
-        void set(int new_m, int new_d); // Mutator(setter) member func
-        int get_month();    // Acessor
-        int get_day();  // Accessor
+        void setMonth(int new_m);   // Mutator
+        void setDay(int new_d);     // Mutator
+        void setDate(int new_m, int new_d); // Mutator(setter) member func
+        int getMonth();    // Acessor
+        int getDay();  // Accessor
 
     private: 
         // These are all member variables to be used internally
@@ -25,9 +28,23 @@ class DayOfYear {
 
 int main () {
     // Create 2 objects of DayOfYear
-    DayOfYear today, birthday (12, 2);
+    DayOfYear today, birthday;
 
-    // 
+    // Mutator function call
+    today.setDay(10);
+    today.setMonth(2);
+
+    birthday.setDay(10);
+    birthday.setMonth(2);
+
+    // Output accessor function call
+    today.output();
+
+    if ((today.getDay()) == (birthday.getDay()) && (today.getMonth()) == (birthday.getMonth())) {
+        cout << "Happy birthday!" << endl;
+    } else {
+        cout << "Happy unbirthday!" << endl;
+    }
 
     return 0;
 }
@@ -53,18 +70,18 @@ void DayOfYear::output() {
     cout << "Month is: " << month << ", day is: " << day << endl;
 }
 
-void DayOfYear::set_month(int new_month) {
-    int month = new_month;
+void DayOfYear::setMonth(int new_month) {
+    month = new_month;
     check_date();
 }
 
-void DayOfYear::set_month(int new_day) {
-    int day = new_day;
+void DayOfYear::setDay(int new_day) {
+    day = new_day;
     check_date();
 }
 
-int DayOfYear::get_month() {return month}
-int DayOfYear::get_day() {return day}
+int DayOfYear::getMonth() {return month;}
+int DayOfYear::getDay() {return day;}
 
 void DayOfYear::check_date() {
     if ((month > 12) || (month < 1) || (day > 31) || (day < 1)) {
@@ -78,22 +95,22 @@ void DayOfYear::check_date() {
 
 // Constructors can invoke another constructor in their initialization
 // Below is an example of a default constructor that calls a second constructor
-coordinate::coordinate(int a, int b): x(a), y(b) {}
-coordinte:coordinate(): coordinate(99,99) {}
+//coordinate::coordinate(int a, int b): x(a), y(b) {}
+//coordinte:coordinate(): coordinate(99,99) {}
 
 // Constructor declaration examples inside class person that has private variables name & age (that are string & int type respectively)
-person();
-person(string name, int age);
+//person();
+//person(string name, int age);
 
 // Data types in which programmers using it do not have access to the details of how values operate & are implemented are called abstract data types (ADT)
 //      Note: abstract to programmer
 //      Note: ADTs are concepts, classes are code implementations. Separate the specification of hyow the data type is used by a programmer from the details of how the type is implemented
 
 // Classes to produce ADTs
-class string {
+/*class string {
     public: 
 
-}
+}*/
 
 // To preserve the interface of an ADT so that programs using it dont need to be changed: 
 //      Public member declarations cant be changed
