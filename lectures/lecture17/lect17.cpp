@@ -3,6 +3,9 @@
 #include <iomanip>
 
 using namespace std;
+
+// Note that all the member functions below still need to be defined
+//      In this cpp file, they are defined outside of the class (but they can be defined inside the class!)
 class DayOfYear {
     public: 
         DayOfYear();    // Constructor
@@ -16,8 +19,9 @@ class DayOfYear {
         int getDay();  // Accessor
 
     private: 
-        // These are all member variables to be used internally
+        // Member function to be used internally
         void check_date();
+        // Member variables
         int month;
         int day;
 };
@@ -49,6 +53,15 @@ int main () {
     return 0;
 }
 
+// Constructors can invoke another constructor in their initialization
+// Below is an example of a default constructor that calls a second constructor
+//coordinate::coordinate(int a, int b): x(a), y(b) {}
+//coordinte:coordinate(): coordinate(99,99) {}
+
+// Constructor declaration examples inside class person that has private variables name & age (that are string & int type respectively)
+//person();
+//person(string name, int age);
+
 // Constructor definition(s)
 //      Note: constructors dont have types & dont return anything
 // Default constructor definition: 
@@ -65,42 +78,31 @@ DayOfYear::DayOfYear(int m, int d): day(d), month(m) {
     }
 }
 
-// Accessor ("getter") function to obtain values of member variables
-void DayOfYear::output() {
-    cout << "Month is: " << month << ", day is: " << day << endl;
-}
-
+// Mutator ("setter") functions allow member variable values to be changed
+//      Note: set() in class DayOfYear
+// Mutator function definitions
 void DayOfYear::setMonth(int new_month) {
     month = new_month;
     check_date();
 }
-
 void DayOfYear::setDay(int new_day) {
     day = new_day;
     check_date();
 }
 
+// Accessor function definitions
 int DayOfYear::getMonth() {return month;}
 int DayOfYear::getDay() {return day;}
-
 void DayOfYear::check_date() {
     if ((month > 12) || (month < 1) || (day > 31) || (day < 1)) {
         cerr << "Bad date used." << endl;
         exit(1);
     }
 }
-
-// Mutator ("setter") functions allow member variable values to be changed
-//      Note: set() in class DayOfYear
-
-// Constructors can invoke another constructor in their initialization
-// Below is an example of a default constructor that calls a second constructor
-//coordinate::coordinate(int a, int b): x(a), y(b) {}
-//coordinte:coordinate(): coordinate(99,99) {}
-
-// Constructor declaration examples inside class person that has private variables name & age (that are string & int type respectively)
-//person();
-//person(string name, int age);
+// Accessor ("getter") function to obtain values of member variables
+void DayOfYear::output() {
+    cout << "Month is: " << month << ", day is: " << day << endl;
+}
 
 // Data types in which programmers using it do not have access to the details of how values operate & are implemented are called abstract data types (ADT)
 //      Note: abstract to programmer
