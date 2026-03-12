@@ -31,66 +31,66 @@ int arrayCount(const string& file_name) {
 }
 
 int main () {
-    // Input & output streams, file name string declaration
-    ifstream in_stream;
-    string file_name;
+  // Input & output streams, file name string declaration
+  ifstream in_stream;
+  string file_name;
 
-    // Get file name from user and open ifstream
-    cout << "Enter filename: ";
-    getline(cin, file_name);
-    in_stream.open(file_name);
+  // Get file name from user and open ifstream
+  cout << "Enter filename: ";
+  getline(cin, file_name);
+  in_stream.open(file_name);
 
-    // If opening file fails
-    if (!in_stream.is_open()) {
-        cerr << "Cannot open " << file_name;
-        exit(1);
-    }
+  // If opening file fails
+  if (!in_stream.is_open()) {
+    cerr << "Cannot open " << file_name;
+    exit(1);
+  }
 
-    // Organize data
-    // Get total number of integers in file
-    int total_ints = arrayCount(file_name);
-    // Check if total_ints = 0 & file actually has integer values
-    if (total_ints <= 0) {
-        cerr << "Cannot open " << file_name;
-        exit(1);
-    }
+  // Organize data
+  // Get total number of integers in file
+  int total_ints = arrayCount(file_name);
+  // Check if total_ints = 0 & file actually has integer values
+  if (total_ints <= 0) {
+      cerr << "Cannot open " << file_name;
+      exit(1);
+  }
 
-    // Create dynamic array of size total_ints using new()
-    int* newArray = new int[total_ints];
+  // Create dynamic array of size total_ints using new()
+  int* newArray = new int[total_ints];
 
-    // Creating appropriate variables for file
-    // Populate dynaymic array by reading inputs from txt file
-    for (int i = 0; i < total_ints; i++) {
-        in_stream >> newArray[i];
-    }
-    // Close input file
-    in_stream.close();
-    
-    // Set precision
-    cout << fixed << showpoint;
-    cout << setprecision(2);
+  // Creating appropriate variables for file
+  // Populate dynaymic array by reading inputs from txt file
+  for (int i = 0; i < total_ints; i++) {
+      in_stream >> newArray[i];
+  }
+  // Close input file
+  in_stream.close();
+  
+  // Set precision
+  cout << fixed << showpoint;
+  cout << setprecision(2);
 
-    // Sort found data
-    bubbleSort(newArray, total_ints);
-    // Function calls to find average, median, & std_dev
-    cout << "Here are some statistics:" << endl;
-    // # of values in array
-    cout << "      N: " << total_ints << endl;
-    // average
-    double avg = findAverage(newArray, total_ints);
-    cout << "Average: " << avg << endl;
-    // median
-    double median = findMedian(newArray, total_ints);
-    cout << " Median: " << median << endl;
-    // std_dev
-    double std_dev = findStdDev(newArray, total_ints, avg);
-    cout << " StdDev: " << std_dev;
+  // Sort found data
+  bubbleSort(newArray, total_ints);
+  // Function calls to find average, median, & std_dev
+  cout << "Here are some statistics:" << endl;
+  // # of values in array
+  cout << "      N: " << total_ints << endl;
+  // average
+  double avg = findAverage(newArray, total_ints);
+  cout << "Average: " << avg << endl;
+  // median
+  double median = findMedian(newArray, total_ints);
+  cout << " Median: " << median << endl;
+  // std_dev
+  double std_dev = findStdDev(newArray, total_ints, avg);
+  cout << " StdDev: " << std_dev;
 
-    // Delete dynamic array
-    delete[] newArray;
-    newArray = nullptr;
+  // Delete dynamic array
+  delete[] newArray;
+  newArray = nullptr;
 
-    return 0;
+  return 0;
 }
 
 // Function Definitions
