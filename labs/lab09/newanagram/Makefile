@@ -3,4 +3,3 @@ newanagram: newanagram.cpp headers.h functions.cpp
 
 clean:
 	rm -f a.out *.o newanagram
-
