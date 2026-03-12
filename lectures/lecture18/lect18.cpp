@@ -39,6 +39,23 @@ class Dawg {
         string dawg_name;
 };
 
+
+// Memory Slicing Example
+class Animal {
+    public:
+        virtual void speak() const {cout << "Generic animal sound" << endl;}
+};
+
+class Cat : public Animal {
+    public:
+        void speak() const {cout << "Meow" << endl;}
+};
+
+void describeByRef(const Animal& a) {
+    cout << "By reference: ";
+    a.speak();
+}
+
 int main () {
     // iClicker 1: 
     // Using class MarketItem
@@ -58,8 +75,18 @@ int main () {
     dawg1.setName("CupcakeTheDestroyer");
     dawg2.setName("Sausage");
 
+    cout << "My first dog's name is: " << dawg1.getName() << endl;
+    cout << "My second dog's name is: " << dawg2.getName() << endl;
+
     // Are dey old enough?
     // Construct if statements to check in non-default constructor w/ parameters
+
+
+    // Memory slicing
+    Cat Scoobert;
+    Scoobert.speak(); // Outputs: "Meow"
+
+    describeByRef(Scoobert);
 
     return 0;
 }
