@@ -29,13 +29,13 @@ int main () {
         cout << endl;
 
     // iClicker 3
-        /*char c;
+        char c;
         string s;
 
         ifstream fin;
         ofstream fout;
 
-        fin.open("input.txt");
+        /*fin.open("input.txt");
         fout.open("output.txt");
         fin.get(c);
         fin >> s;
@@ -65,8 +65,8 @@ int main () {
             // This is incorrect because you can only concatenate two strings using the '+' operator
             // This would have worked if the array was defined as string type
                 string s[10] = {"C", "M", "P", "S", "C", "1", "6", "\0"};
-                string *p1 = s;
-                string *p2 = &s[3];
+                string *p1 = &s;
+                string *p2 = &(s[3]);
                 string str = *(p1+6) + *p2;
                 cout << str << endl;
 
