@@ -108,13 +108,22 @@ int main() {
         char aLetter = 97;
         cout << "The ASCII index 97 is: " << aLetter << endl;
     // mult-d arrays
-        const int max1 = 10, max2 = 20;
-        int arr[max1][max2] = {};
-        cout << "a 10 * 20 array below:" << endl;
-        // use nested for loops to go through mda's
-            for (int i = 0; i < max1; i++) {
-                for (int j = 0; j < max2; j++) {
-                    cout << arr[i][j];
+        // mda test 1
+            const int max1 = 10, max2 = 20;
+            int arr[max1][max2] = {};
+            cout << "a 10 * 20 array below:" << endl;
+            // use nested for loops to go through mda's
+                for (int i = 0; i < max1; i++) {
+                    for (int j = 0; j < max2; j++) {
+                        cout << arr[i][j];
+                    }
+                    cout << endl;
+            }
+        // mda test 2
+            double numbers[2][3] = { {6,7}, {8,9} };
+            for (int i = 0; i < 2; i++) {
+                for (int j = 0; j < 3; j++) {
+                    cout << numbers[i][j];
                 }
                 cout << endl;
             }
