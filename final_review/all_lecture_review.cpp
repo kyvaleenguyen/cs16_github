@@ -103,6 +103,9 @@ int main() {
     // built in string member funcs
         string aSentence = "Today is a good day!";
         cout << aSentence.find_first_of("a", 5) << endl;
+    // chars & ASCII
+        char aLetter = 97;
+        cout << aLetter << endl;
 
 
     return 0;
