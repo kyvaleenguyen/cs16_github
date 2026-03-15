@@ -11,7 +11,8 @@ int main (int argc, char *argv[]) {
     int num2 = atoi(argv[2]);
     int add = num1 + num2;
     int prod = num1 * num2;
-    cout << add << " " << prod << endl;
+    cout << "The sum of the numbers is: " << add << endl;
+    cout << "The product of the numbers is: " << prod << endl;
 
     return 0;
 }
