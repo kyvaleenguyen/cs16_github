@@ -103,7 +103,7 @@ int main() {
     // built in string member funcs
         string aSentence = "Today is a good day!";
         cout << aSentence << endl;
-        cout << "The second letter "a" in the sentence is at index: " << aSentence.find_first_of("a", 5) << endl;
+        cout << "The second letter 'a' in the sentence is at index: " << aSentence.find_first_of("a", 5) << endl;
     // chars & ASCII
         char aLetter = 97;
         cout << "The ASCII index 97 is: " << aLetter << endl;
