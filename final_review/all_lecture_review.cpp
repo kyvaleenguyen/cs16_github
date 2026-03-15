@@ -102,7 +102,7 @@ int main() {
         // bunga
     // built in string member funcs
         string aSentence = "Today is a good day!";
-        cout << aSentence.find_first_of("a") << endl;
+        cout << aSentence.find_first_of("a", 5) << endl;
 
 
     return 0;
