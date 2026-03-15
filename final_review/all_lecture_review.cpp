@@ -20,7 +20,7 @@ void evenOrOdd(int num) {
 // class declarations: 
 
 
-// member func declarations & definitions below: 
+    // member func declarations & definitions below: 
 
 
 
@@ -99,7 +99,10 @@ int main() {
     // funcs:
         // void evenOrOdd:
             evenOrOdd(5);
-        // 
+        // bunga
+    // built in string member funcs
+        string aSentence = "Today is a good day!";
+        cout << aSentence.find_first_of("a") << endl;
 
 
     return 0;
