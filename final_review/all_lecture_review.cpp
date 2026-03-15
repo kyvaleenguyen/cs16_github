@@ -109,7 +109,7 @@ int main() {
         cout << "The ASCII index 97 is: " << aLetter << endl;
     // mult-d arrays
         const int max1 = 10, max2 = 20;
-        int arr[max1][max2];
+        int arr[max1][max2] = {};
         // use nested for loops to go through mda's
             for (int i = 0; i < max1; i++) {
                 for (int j = 0; j < max2; j++) {
