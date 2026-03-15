@@ -110,6 +110,7 @@ int main() {
     // mult-d arrays
         const int max1 = 10, max2 = 20;
         int arr[max1][max2] = {};
+        cout << "a 10 * 20 array below:" << endl;
         // use nested for loops to go through mda's
             for (int i = 0; i < max1; i++) {
                 for (int j = 0; j < max2; j++) {
