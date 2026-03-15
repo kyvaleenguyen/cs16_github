@@ -121,6 +121,7 @@ int main() {
             }
         // mda test 2
             double numbers[2][3] = { {6,7}, {8,9} };
+            cout << "a 2 * 3 array below" << endl;
             for (int i = 0; i < 2; i++) {
                 for (int j = 0; j < 3; j++) {
                     cout << numbers[i][j];
