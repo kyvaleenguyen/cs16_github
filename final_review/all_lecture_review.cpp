@@ -135,11 +135,11 @@ int main() {
             }
     // pass by ref & pointers
         // void swap func call
-            int 1st = 5;
-            int 2nd = 10;
-            cout << "before swap: " << 1st << " " << 2nd << endl;
-            swap(1st, 2nd);
-            cout << "after swap: " << 1st << " " << 2nd << endl;
+            int first = 5;
+            int second = 10;
+            cout << "before swap: " << first << " " << second << endl;
+            swap(first, second);
+            cout << "after swap: " << first << " " << second << endl;
         // 
     return 0;
 }
