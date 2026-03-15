@@ -16,6 +16,11 @@ void evenOrOdd(int num) {
         cout << num << " is odd!" << endl;
     }
 }
+void swap (int &num1, int &num2) {
+    int tmp = num1;
+    num1 = num2;
+    num2 = tmp;
+}
 
 // class declarations: 
 
@@ -128,6 +133,13 @@ int main() {
                 }
                 cout << endl;
             }
-    // 
+    // pass by ref & pointers
+        // void swap func call
+            int 1st = 5;
+            int 2nd = 10;
+            cout << "before swap: " << 1st << " " << 2nd << endl;
+            swap(1st, 2nd);
+            cout << "after swap: " << 1st << " " << 2nd << endl;
+        // 
     return 0;
 }
