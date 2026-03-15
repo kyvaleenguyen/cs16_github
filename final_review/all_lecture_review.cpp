@@ -115,7 +115,7 @@ int main() {
             // use nested for loops to go through mda's
                 for (int i = 0; i < max1; i++) {
                     for (int j = 0; j < max2; j++) {
-                        cout << arr[i][j];
+                        cout << "\t" << arr[i][j];
                     }
                     cout << endl;
             }
@@ -124,7 +124,7 @@ int main() {
             cout << "a 2 * 3 array below" << endl;
             for (int i = 0; i < 2; i++) {
                 for (int j = 0; j < 3; j++) {
-                    cout << numbers[i][j];
+                    cout << "\t" << numbers[i][j];
                 }
                 cout << endl;
             }
