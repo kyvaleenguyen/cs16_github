@@ -157,6 +157,7 @@ int main() {
         for (int item : evens) {
             cout << item << " ";
         }
+        cout << endl;
     // 
     return 0;
 }
