@@ -33,7 +33,10 @@ string d2b (string decimalStr) {
     int dec = 0;
     for (int i = 0; i < decimalStr.size(); i++) {
         int digit = decimalStr[i] - '0';
-        dec += (dec * 10) + digit;
+        dec = (dec * 10) + digit;
+    }
+    if (dec == 0) {
+        return "0";
     }
     string newVal = "";
     string digits = "0123456789";
@@ -46,7 +49,7 @@ string d2b (string decimalStr) {
 }
 int b2d (string binString) {
     for (int i = 0; i < binString.size(); i++) {
-        if ((binString[i] != '0') || (binString[i] != '1')) {
+        if ((binString[i] != '0') && (binString[i] != '1')) {
             cerr << "bad input. Must only contain 1s & 0s" << endl;
             exit(1);
         }
@@ -58,19 +61,101 @@ int b2d (string binString) {
     for (int i = n - 1; i >= 0; i--) {
         if (binString[i] == '1') {
             dec += pow(2, index);
-            index++;
         }
+        index++;
     }
     cout << "decimal value is: ";
     return dec;
 }
+int seqSearch(int arr[], int size, int target) {
+    int index(0);
+    while (index < size) {
+        if (arr[index] == target) {
+            return index;
+        } else {
+            index++;
+        }
+    }
+    return -1;
+}
+void bubbleSort(int arr[], int size) {
+    for (int i = size - 1; i >= 0; i--) {
+        for (int j = 0; j < size; j++) {
+            if (arr[j-1] > arr[j]) {
+                int tmp = arr[j-1];
+                arr[j-1] = arr[j];
+                arr[j] = tmp;
+            }
+        }
+    }
+}
+void selectionSort(int arr[], int size) {
+    int largestNum;
+    int largestIndex;
+    int tmp;
+    for (int i = size -1; i >= 0; i--) {
+        largestNum = arr[0];
+        largestIndex = 0;
+        for (int j = 1; j <= i; j++) {
+            if (arr[j] > largestNum) {
+                largestNum = arr[j];
+                largestIndex = j;
+            }
+        }
+        tmp = arr[i];
+        arr[i] = arr[largestIndex];
+        arr[largestIndex] = tmp;
+    }
+}
+// recursion
+int factorial(int n) {
+    // base case
+    if (n == 1) {
+        return n;
+    }
+    return n * factorial(n - 1);
+}
+void writeVert(int n) {
+    // base case
+    if (n < 10) {
+        cout << n << endl;
+    } else {
+        writeVert(n / 10);
+        cout << (n % 10) << endl;
+    }
+}
+int formula(int n) {
+    // base case
+    if (n <= 1) {
+        return 3;
+    } else {
+        return 2 * formula(n -1) + 5;
+    }
+}
+
+// structs
+    // linked lists
+        struct listNode {
+            string item;
+            int count;
+            listNode *link;
+        };
+        typedef listNode* listNodePtr;
+        listNodePtr head;
 
 // class declarations: 
 
 
     // member func declarations & definitions below: 
 
-
+// class type templates
+template<class T>
+void swapVal(T& var1, T& var2) {
+    T tmp;
+    tmp = var1;
+    var1 = var2;
+    var2 = tmp;
+}
 
 int main() {
     // for loops:
@@ -223,15 +308,95 @@ int main() {
         // note: .reserve() is a built in mem func for vectors that reserves an int number for the capacity of a vector
     // b2d, d2h, d2b
         cout << "enter a decimal to be converted to binary: ";
-        int dec;
+        string dec;
         cin >> dec;
         cout << d2b(dec) << endl;
         
         cout << "enter a binary to be converted to decimal: ";
-        int bin;
+        string bin;
         cin >> bin;
         cout << b2d(bin) << endl;
+    // ifstream & ofstream
+        // ifstream
+            ifstream inStream;
+            inStream.open("input1.txt");
+            char c1, c2, c3;
+            inStream.get(c1);
+            inStream.get(c2);
+            inStream.get(c3);
+            cout << c2 << endl;
+        // ofstream
+            ofstream outStream;
+            inStream.close();
+    // search algorithms
+            int nums[5] = {1, 2, 3, 4, 5};
+            int numsSize = 5;
+            cout << seqSearch(nums, numsSize, 3) << endl;
+        // bubbleSort
+            int listing[5] = {20, 4, 8, 2, 5};
+            int listingSize = 5;
+            cout << "before bubbleSort: ";
+            for (int i = 0; i < listingSize; i++) {
+                cout << listing[i] << " ";
+            }
+            cout << endl;
+            bubbleSort(listing, listingSize);
+            cout << "after bubbleSort: ";
+            for (int i = 0; i < listingSize; i++) {
+                cout << listing[i] << " ";
+            }
+            cout << endl;
+        // selectionSort
+            int sort1[10] = {34, 21, 10, 32, 50, 3, 1, 30, 18, 25};
+            int sort1Size = 10;
+            cout << "before selection sort: ";
+            for (int i = 0; i < sort1Size; i++) {
+                cout << sort1[i] << " ";
+            }
+            cout << endl;
+            selectionSort(sort1, sort1Size);
+            cout << "after selectionSort: ";
+            for (int i = 0; i < sort1Size; i++) {
+                cout << sort1[i] << " ";
+            }
+            cout << endl;
+    // recursion:
+        // factorial recursive func
+            int lol = 4;
+            int fact = factorial(lol);
+            cout << "the factorial of: " << lol << " is: " << fact << endl;
+        // writeVertical
+            int random = 54321;
+            cout << random << " vertical is: " << endl;
+            writeVert(random);
+            cout << endl;
+        // formula
+            int four = 4;
+            cout << "Element: " << four << " in the sequence is: " << formula(4) << endl;
+    // linked lists
+        listNode node1, node2, node3, node4;
+        node1.item = "thing1"; node1.count = 1;
+        node2.item = "thing2"; node2.count = 2;
+        node3.item = "thing3"; node3.count = 3;
+        node4.item = "thing4"; node4.count = 4;
 
-        
+        // link head to link of first node
+        head = &node1;
+        // link nodes to each other
+        head->link = &node2;
+        head->link->count = 5;
+        head->link->link = &node3;
+        head->link->link->link = &node4;
+        // to end linked list, make last node link point to NULL or nullptr
+        node4.link = nullptr;
+        // print items & counts in linked list:
+            listNodePtr tmp = head;
+            cout << "printing the linked list: " << endl;
+            while (tmp != NULL) {
+                cout << tmp->item << " " << tmp->count << endl;
+                tmp = tmp->link;
+            }
+    // type templates
+
     return 0;
 }
