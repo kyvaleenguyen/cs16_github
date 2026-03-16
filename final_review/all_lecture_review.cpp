@@ -181,7 +181,7 @@ int main() {
     // b2d, d2h, d2b
         // converting any base to decimal
         int rand = 468;
-        cout << 468 % 100 << endl;
+        cout << rand - (468 % 100) << endl;
 
     return 0;
 }
