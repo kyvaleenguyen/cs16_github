@@ -154,6 +154,7 @@ int main() {
                 delete p1;
     // range based for loops
         int evens[4] = {2, 4, 6, 8};
+        cout << "Iterating through an array using a range based for loop:" << endl;
         for (int item : evens) {
             cout << item << " ";
         }
