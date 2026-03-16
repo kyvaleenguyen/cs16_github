@@ -164,6 +164,14 @@ int main() {
             cout << item << " ";
         }
         cout << endl;
-    // 
+    // vectors
+        // vector declaration & initialization, .push_back()
+        vector<int> count;
+        int start = 5;
+        for (int i = 0; i < 10; i++) {
+            count.push_back(start);
+            start++;
+        }
+        cout << endl;
     return 0;
 }
