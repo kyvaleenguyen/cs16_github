@@ -141,10 +141,15 @@ int main() {
             swap(first, second);
             cout << "after swap: " << first << " " << second << endl;
         // memory address * pointer
-        int number = 42;
-        int *numberPtr = &number;
-        cout << "int pointer pointing to memory address of number is: " << numberPtr << endl;
-        cout << "int pointer pointing to the value of number equals number: " << *numberPtr << endl;
+            int number = 42;
+            int *numberPtr = &number;
+            cout << "int pointer pointing to memory address of number is: " << numberPtr << endl;
+            cout << "int pointer pointing to the value of number equals number: " << *numberPtr << endl;
+        // new operator (new variables are stored in heap memory)
+            int *p1 = new int;
+            cin >> *p1;
+            *p1 = *p1 + 7;
+            cout << "p1 points to the value stored in a new int variable: " << *p1 << endl;
 
     return 0;
 }
