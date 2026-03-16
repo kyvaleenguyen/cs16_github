@@ -170,6 +170,7 @@ int main() {
         int start = 5;
         for (int i = 0; i < 10; i++) {
             count.push_back(start);
+            cout << count[i] << " ";
             start++;
         }
         cout << endl;
