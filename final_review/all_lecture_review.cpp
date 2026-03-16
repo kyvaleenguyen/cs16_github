@@ -144,6 +144,7 @@ int main() {
         int number = 42;
         int *numberPtr = &number;
         cout << "int pointer pointing to memory address of number is: " << numberPtr << endl;
-        
+        cout << "int pointer pointing to the value of number equals number: " << *numberPtr << endl;
+
     return 0;
 }
