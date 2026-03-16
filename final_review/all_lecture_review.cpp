@@ -155,8 +155,8 @@ int main() {
         // pointer to a pointer example
             int day = 1;
             int *ptr = &day;
-            int **ptr = &ptr;
-            cout << "pointer to a pointer for var day (1): " << ptr << endl;
+            int **pptr = &ptr;
+            cout << "pointer to a pointer for var day (1): " << pptr << endl;
     // range based for loops
         int evens[4] = {2, 4, 6, 8};
         cout << "Iterating through an array using a range based for loop:" << endl;
