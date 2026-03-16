@@ -150,6 +150,8 @@ int main() {
             cin >> *p1;
             *p1 = *p1 + 7;
             cout << "p1 points to the value stored in a new int variable: " << *p1 << endl;
+            // delete the dynamic variable
+                delete p1;
 
     return 0;
 }
