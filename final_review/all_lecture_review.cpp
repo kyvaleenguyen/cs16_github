@@ -21,6 +21,12 @@ void swap (int &num1, int &num2) {
     num1 = num2;
     num2 = tmp;
 }
+void d2b (int decimal) {
+    vector<int> bin;
+    if ((decimal / 2) != 0) {
+        bin.push_back(decimal % 10);
+    }
+}
 
 // class declarations: 
 
@@ -180,8 +186,7 @@ int main() {
         // note: .reserve() is a built in mem func for vectors that reserves an int number for the capacity of a vector
     // b2d, d2h, d2b
         // converting any base to decimal
-        int rand = 468;
-        cout << rand - (468 % 100) << endl;
+            cout << 9 / 2 << endl;
 
     return 0;
 }
