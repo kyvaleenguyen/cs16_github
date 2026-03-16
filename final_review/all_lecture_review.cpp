@@ -177,6 +177,11 @@ int main() {
         // alternate initialization for vectors & size built in func
             vector<int> v(10);  // intializes first 10 elements to 0
             cout << "the size of vector v is: " << v.size() << endl;   // prints the total number of values in the vector
-    // 
+        // note: .reserve() is a built in mem func for vectors that reserves an int number for the capacity of a vector
+    // b2d, d2h, d2b
+        // converting any base to decimal
+        int rand = 468;
+        cout << 468 % 100 << endl;
+
     return 0;
 }
