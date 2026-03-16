@@ -140,6 +140,10 @@ int main() {
             cout << "before swap: " << first << " " << second << endl;
             swap(first, second);
             cout << "after swap: " << first << " " << second << endl;
-        // 
+        // memory address * pointer
+        int number = 42;
+        int *numberPtr = &number;
+        cout << "int pointer pointing to memory address of number is: " << numberPtr << endl;
+        
     return 0;
 }
