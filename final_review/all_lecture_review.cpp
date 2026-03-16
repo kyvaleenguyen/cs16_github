@@ -21,11 +21,48 @@ void swap (int &num1, int &num2) {
     num1 = num2;
     num2 = tmp;
 }
-void d2b (int decimal) {
-    vector<int> bin;
-    if ((decimal / 2) != 0) {
-        bin.push_back(decimal % 10);
+string d2b (string decimalStr) {
+    // check if string input has only digit values
+    for (int i = 0; i < decimalStr.size(); i++) {
+        if (!(isdigit(decimalStr[i]))) {
+            cerr << "invalid input, string must be digits only" << endl;
+            exit(1);
+        }
     }
+    // convert decimalStr to int
+    int dec = 0;
+    for (int i = 0; i < decimalStr.size(); i++) {
+        int digit = decimalStr[i] - '0';
+        dec += (dec * 10) + digit;
+    }
+    string newVal = "";
+    string digits = "0123456789";
+    while (dec > 0) {
+        newVal = digits[dec % 2] + newVal;
+        dec /= 2;
+    }
+    cout << "binary value is: ";
+    return newVal;
+}
+int b2d (string binString) {
+    for (int i = 0; i < binString.size(); i++) {
+        if ((binString[i] != '0') || (binString[i] != '1')) {
+            cerr << "bad input. Must only contain 1s & 0s" << endl;
+            exit(1);
+        }
+    }
+    int dec = 0;
+    int n = binString.size();
+    int index = 0;
+    // iterate backwards
+    for (int i = n - 1; i >= 0; i--) {
+        if (binString[i] == '1') {
+            dec += pow(2, index);
+            index++;
+        }
+    }
+    cout << "decimal value is: ";
+    return dec;
 }
 
 // class declarations: 
@@ -185,8 +222,16 @@ int main() {
             cout << "the size of vector v is: " << v.size() << endl;   // prints the total number of values in the vector
         // note: .reserve() is a built in mem func for vectors that reserves an int number for the capacity of a vector
     // b2d, d2h, d2b
-        // converting any base to decimal
-            cout << 9 / 2 << endl;
+        cout << "enter a decimal to be converted to binary: ";
+        int dec;
+        cin >> dec;
+        cout << d2b(dec) << endl;
+        
+        cout << "enter a binary to be converted to decimal: ";
+        int bin;
+        cin >> bin;
+        cout << b2d(bin) << endl;
 
+        
     return 0;
 }
