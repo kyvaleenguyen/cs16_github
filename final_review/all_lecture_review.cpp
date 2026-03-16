@@ -152,6 +152,11 @@ int main() {
             cout << "p1 points to the value stored in a new int variable: " << *p1 << endl;
             // delete the dynamic variable
                 delete p1;
-
+    // range based for loops
+        int arr[4] = {2, 4, 6, 8};
+        for (int item : arr) {
+            cout << item << " ";
+        }
+    // 
     return 0;
 }
