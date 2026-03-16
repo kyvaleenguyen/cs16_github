@@ -153,8 +153,8 @@ int main() {
             // delete the dynamic variable
                 delete p1;
     // range based for loops
-        int arr[4] = {2, 4, 6, 8};
-        for (int item : arr) {
+        int evens[4] = {2, 4, 6, 8};
+        for (int item : evens) {
             cout << item << " ";
         }
     // 
