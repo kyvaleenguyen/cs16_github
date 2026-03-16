@@ -166,13 +166,17 @@ int main() {
         cout << endl;
     // vectors
         // vector declaration & initialization, .push_back()
-        vector<int> count;
-        int start = 5;
-        for (int i = 0; i < 10; i++) {
-            count.push_back(start);
-            cout << count[i] << " ";
-            start++;
-        }
-        cout << endl;
+            vector<int> count;
+            int start = 5;
+            for (int i = 0; i < 10; i++) {
+                count.push_back(start);
+                cout << count[i] << " ";
+                start++;
+            }
+            cout << endl;
+        // alternate initialization for vectors & size built in func
+            vector<int> v(10);  // intializes first 10 elements to 0
+            cout << "the size of vector v is: " << v.size() << endl;   // prints the total number of values in the vector
+    // 
     return 0;
 }
