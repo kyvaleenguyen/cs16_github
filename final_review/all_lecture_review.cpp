@@ -154,7 +154,8 @@ int main() {
                 delete p1;
         // pointer to a pointer example
             int day = 1;
-            int **ptr = &day;
+            int *ptr = &day;
+            int **ptr = &ptr;
             cout << "pointer to a pointer for var day (1): " << ptr << endl;
     // range based for loops
         int evens[4] = {2, 4, 6, 8};
